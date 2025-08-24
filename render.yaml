@@ -1,8 +1,10 @@
-services:
-  - type: pserv
-    name: trippage-db
+# PostgreSQL 데이터베이스
+databases:
+  - name: trippage-db
     plan: free
-    
+
+# 웹 서비스
+services:
   - type: web
     name: trippage-web
     env: node
