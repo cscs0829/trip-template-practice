@@ -2,7 +2,7 @@ services:
   # PostgreSQL 데이터베이스
   - type: pserv
     name: trippage-db
-    env: node
+    env: postgresql
     plan: free
     region: singapore
     
@@ -17,6 +17,8 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: PORT
+        value: 10000
       - key: DATABASE_URL
         fromDatabase:
           name: trippage-db
