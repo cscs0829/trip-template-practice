@@ -1,16 +1,12 @@
 services:
-  # PostgreSQL 데이터베이스
   - type: pserv
     name: trippage-db
     env: postgresql
     plan: free
-    region: singapore
     
-  # Node.js 웹 서비스
   - type: web
     name: trippage-web
     env: node
-    region: singapore
     plan: free
     buildCommand: npm install
     startCommand: npm start
