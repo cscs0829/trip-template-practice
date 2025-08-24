@@ -22,8 +22,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 정적 파일 제공 (루트 디렉토리)
-app.use(express.static(path.join(__dirname)));
+// 정적 파일 제공 설정
+const staticPath = process.env.NODE_ENV === 'production' 
+  ? path.join(__dirname, 'src') 
+  : __dirname;
+app.use(express.static(staticPath));
 
 // API 라우트
 
@@ -124,39 +127,47 @@ app.get('/api/gallery', async (req, res) => {
   }
 });
 
+// HTML 파일 경로 설정
+const getHtmlPath = (filename) => {
+  const trippageDir = process.env.NODE_ENV === 'production' 
+    ? path.join(__dirname, 'src', 'trippage') 
+    : path.join(__dirname, 'trippage');
+  return path.join(trippageDir, filename);
+};
+
 // 메인 페이지 라우트
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'trippage', 'index.html'));
+  res.sendFile(getHtmlPath('index.html'));
 });
 
 // 여행지 목록 페이지
 app.get('/destination', (req, res) => {
-  res.sendFile(path.join(__dirname, 'trippage', 'destination.html'));
+  res.sendFile(getHtmlPath('destination.html'));
 });
 
 // 여행지 상세 페이지 (동적 라우팅)
 app.get('/destination/:slug', (req, res) => {
-  res.sendFile(path.join(__dirname, 'trippage', 'single-destination.html'));
+  res.sendFile(getHtmlPath('single-destination.html'));
 });
 
 // 갤러리 페이지
 app.get('/gallery', (req, res) => {
-  res.sendFile(path.join(__dirname, 'trippage', 'gallery.html'));
+  res.sendFile(getHtmlPath('gallery.html'));
 });
 
 // 뉴스 페이지
 app.get('/news', (req, res) => {
-  res.sendFile(path.join(__dirname, 'trippage', 'news.html'));
+  res.sendFile(getHtmlPath('news.html'));
 });
 
 // 뉴스 상세 페이지
 app.get('/news/:slug', (req, res) => {
-  res.sendFile(path.join(__dirname, 'trippage', 'single-news.html'));
+  res.sendFile(getHtmlPath('single-news.html'));
 });
 
 // 404 에러 처리
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'trippage', 'index.html'));
+  res.status(404).sendFile(getHtmlPath('index.html'));
 });
 
 // 서버 시작
