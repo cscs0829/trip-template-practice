@@ -22,8 +22,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 정적 파일 제공 (trippage 폴더)
-app.use(express.static(path.join(__dirname, 'trippage')));
+// 정적 파일 제공 (루트 디렉토리)
+app.use(express.static(path.join(__dirname)));
 
 // API 라우트
 
