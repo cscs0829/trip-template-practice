@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>결제 완료 - 트립페이지</title>
+	<link rel="icon" type="image/png" href="img/icon/bavel.png">
+
+	<!-- Meta Description -->
+	<meta name="description" content="트립페이지 - 여행 상품 판매 및 여행 정보 제공">
+	<meta name="keywords" content="여행, 여행상품, 여행사, 여행정보, 여행가이드">
+	<meta name="robots" content="index, nofollow">
+	<meta name="web_author" content="트립페이지">
+	<meta name="language" content="Korean">  
+
+	<!-- Import Icon -->
+  	<link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
+
+	<!-- Import Style -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper.css">
+    
+    <style>
+        .success-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .success-title {
+            color: #28a745;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .success-subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .order-info {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .order-info h4 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-row span:first-child {
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .info-row span:last-child {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .notice {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: left;
+            border-left: 4px solid #007bff;
+        }
+        
+        .notice h5 {
+            color: #007bff;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .notice ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .notice li {
+            padding: 8px 0;
+            color: #495057;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .notice li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .action-buttons a {
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108,117,125,0.3);
+        }
+        
+        .btn-tertiary {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-tertiary:hover {
+            background: #1e7e34;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40,167,69,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .success-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            .success-title {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-buttons a {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body style="background: #e6eaed;">
+
+
+
+<!-- Navbar -->
+<nav class="navbar">
+	<div class="container">
+		<div class="navbar-bars">
+			<a href="#" class="navbar-title sidebar-toggle" style="padding: 0;"><i class="ion-navicon-round"></i></a>
+        	<a href="index.html" class="navbar-title">트립페이지</a>
+		</div>
+		<div class="navbar-item">
+			<a href="index.html" class="navbar-title">트립페이지</a>
+			<ul>
+		        <li><a href="destination.html">여행지</a></li>
+			    <li><a href="gallery.html">갤러리</a></li>
+			    <li><a data-slide="slides" data-slide-target="#discover">상품소개</a></li>
+			    <li><a href="news.html">뉴스</a></li>
+				<li><button class="btn-login" id="openLogin">로그인</button></li>
+  		  	</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar">
+<ul class="sidebar-list">
+	<li><a href="" class="close"><span class="ion-android-close"></span></a></li>
+	<li class="sidebar-list-hover"><a href="index.html">홈</a></li>
+    <li class="sidebar-list-hover"><a href="destination.html">여행지</a></li>
+    <li class="sidebar-list-hover"><a href="gallery.html">갤러리</a></li>
+    <li class="sidebar-list-hover"><a href="index.html#discover">상품소개</a></li>
+    <li class="sidebar-list-hover"><a href="news.html">뉴스</a></li>
+    <li><a class="btn btn-orange btn-round" href="login.html">로그인</a></li>
+</ul>                    
+</div>
+
+<!-- Sidebar Overlay -->
+<section class="sidebar-overlay"></section>
+
+<!-- Login Form -->
+<div class="login-form">
+	<div class="login-top">
+		<span class="close">&times;</span>
+	</div>
+	<div class="login">
+		<h3 class="text-center">
+			트립페이지 로그인
+		</h3>
+		<div class="form-input">
+			<label>이메일</label> <br>
+			<input type="email" name="" class="form-control">
+		</div>
+		<div class="form-input">
+			<label>비밀번호</label> <br>
+			<input type="password" name="" class="form-control">
+		</div>
+		<div class="form-input">
+			<button type="submit" class="btn btn-login">로그인</button>
+		</div>
+		<a href="" class="text-center">계정이 없으신가요? 회원가입하기</a>
+	</div>
+</div>
+
+<div class="login-overlay"></div>
+
+<!-- Success Container -->
+<div class="success-container">
+    <div class="success-icon">
+        <i class="ion-checkmark"></i>
+    </div>
+    
+    <h2 class="success-title">결제가 완료되었습니다!</h2>
+    <p class="success-subtitle">주문해 주셔서 감사합니다. 예약 확인서가 이메일로 발송됩니다.</p>
+    
+    <div class="order-info">
+        <h4>주문 정보</h4>
+        <div class="info-row">
+            <span>주문번호</span>
+            <span id="orderId">-</span>
+        </div>
+        <div class="info-row">
+            <span>상품명</span>
+            <span id="orderName">-</span>
+        </div>
+        <div class="info-row">
+            <span>결제방법</span>
+            <span id="paymentMethod">-</span>
+        </div>
+        <div class="info-row">
+            <span>결제금액</span>
+            <span id="amount">-</span>
+        </div>
+    </div>
+    
+    <div class="notice">
+        <h5><i class="ion-information-circled"></i> 안내사항</h5>
+        <ul>
+            <li>예약 확인서는 결제 완료 후 5분 이내에 이메일로 발송됩니다.</li>
+            <li>여행 출발 3일 전까지 상세 일정표를 보내드립니다.</li>
+            <li>픽업 시간과 장소는 여행 전날 SMS로 안내됩니다.</li>
+            <li>문의사항이 있으시면 고객센터(02-1234-5678)로 연락주세요.</li>
+        </ul>
+    </div>
+    
+    <div class="action-buttons">
+        <a href="#" class="btn-primary" id="viewReservation">내 예약 보기</a>
+        <a href="index.html" class="btn-secondary">홈으로 가기</a>
+        <a href="destination.html" class="btn-tertiary">다른 상품 보기</a>
+    </div>
+</div>
+
+<section class="section-footer">
+	<div class="row">
+		<div class="col-left">
+			<p>Copyright &copy; 2025</p>
+			<p>서울특별시 강남구 테헤란로 123 <br>
+			전화 : 02-1234-5678 <br>
+			이메일 : contact@trippage.co.kr </p>
+			<a href="https://www.facebook.com/trippage" target="_blank"><span class="ion-social-facebook icon-social"></span></a>
+			<a href="https://www.instagram.com/trippage" target="_blank"><span class="ion-social-instagram icon-social"></span></a>
+			<a href="https://twitter.com/trippage" target="_blank"><span class="ion-social-twitter icon-social"></span></a>
+		</div>
+		<div class="col-right">
+			<b>여행 경험</b>
+			<ul>
+				<li><a href="#">자연</a></li>
+				<li><a href="#">문화</a></li>
+				<li><a href="#">종교</a></li>
+				<li><a href="#">요리</a></li>
+				<li><a href="#">모험</a></li>
+			</ul>
+		</div>
+		<div class="col-right">
+			<b>여행 가이드</b>
+			<ul>
+				<li><a href="#">관광 가이드</a></li>
+				<li><a href="#">여행사</a></li>
+				<li><a href="#">숙박시설</a></li>
+				<li><a href="#">저예산 여행</a></li>
+			</ul>
+		</div>
+		<div class="col-right">
+			<b>소식</b>
+			<ul>
+				<li><a href="#">뉴스</a></li>
+				<li><a href="#">이벤트</a></li>
+				<li><a href="#">팁 & 정보</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<p><a href="https://github.com/cscs0829/trippage-page" rel="noreferer" target="_blank">트립페이지</a> - <span class="ion-heart red"></span>으로 만든 사랑스러운 웹사이트</p>
+		</div>
+</section>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    
+    <script>
+        // URL 파라미터에서 결제 정보 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // 결제 정보 표시
+        document.getElementById('orderId').textContent = urlParams.get('orderId') || '-';
+        document.getElementById('orderName').textContent = urlParams.get('orderName') || '-';
+        document.getElementById('paymentMethod').textContent = urlParams.get('method') || '-';
+        
+        const amount = urlParams.get('amount');
+        if (amount) {
+            document.getElementById('amount').textContent = `₩ ${parseInt(amount).toLocaleString()}`;
+        }
+        
+        // 결제 성공 로그 (실제 서비스에서는 서버로 전송)
+        console.log('Payment Success:', {
+            orderId: urlParams.get('orderId'),
+            paymentKey: urlParams.get('paymentKey'),
+            amount: urlParams.get('amount')
+        });
+        
+        // 내 예약 보기 버튼 클릭 이벤트
+        document.getElementById('viewReservation').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // URL 파라미터들을 예약 페이지로 전달
+            const orderId = urlParams.get('orderId');
+            const orderName = urlParams.get('orderName');
+            const method = urlParams.get('method');
+            const amount = urlParams.get('amount');
+            const paymentKey = urlParams.get('paymentKey');
+            
+            if (orderId && orderName) {
+                // 예약 페이지로 이동
+                const reservationUrl = `my-reservation.html?orderId=${orderId}&orderName=${encodeURIComponent(orderName)}&method=${encodeURIComponent(method || '카드')}&amount=${amount || '240000'}&paymentKey=${paymentKey || 'demo_payment_key'}`;
+                window.location.href = reservationUrl;
+            } else {
+                // 파라미터가 없으면 기본 예약 페이지로 이동
+                window.location.href = 'my-reservation.html';
+            }
+        });
+        
+        // 사이드바 디버깅
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM 로드 완료');
+            
+            // jQuery 확인
+            if (typeof $ !== 'undefined') {
+                console.log('jQuery 로드됨');
+                
+                // 사이드바 토글 버튼 확인
+                const sidebarToggle = $('.sidebar-toggle');
+                console.log('사이드바 토글 버튼:', sidebarToggle.length);
+                
+                // 수동으로 이벤트 추가 (백업)
+                $('.sidebar-toggle').off('click').on('click', function(e) {
+                    console.log('사이드바 토글 클릭됨');
+                    e.preventDefault();
+                    $('.sidebar').addClass('active');
+                    $('.sidebar-overlay').css('visibility', 'visible');
+                });
+                
+                $('.sidebar-overlay, .close').off('click').on('click', function(e) {
+                    console.log('사이드바 닫기 클릭됨');
+                    e.preventDefault();
+                    $('.sidebar').removeClass('active');
+                    $('.sidebar-overlay').css('visibility', 'hidden');
+                });
+            } else {
+                console.error('jQuery가 로드되지 않았습니다');
+            }
+        });
+        
+        // 스크롤 이벤트로 navbar 스타일 변경
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

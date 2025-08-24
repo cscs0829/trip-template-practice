@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>해외여행지 - 트립페이지</title>
+	<link rel="icon" type="image/png" href="img/icon/bavel.png">
+
+	<!-- Meta Description -->
+	<meta name="description" content="트립페이지 - 해외여행 상품 판매 및 여행 정보 제공">
+	<meta name="keywords" content="해외여행, 여행상품, 여행사, 여행정보, 여행가이드, 패키지여행">
+	<meta name="robots" content="index, nofollow">
+	<meta name="web_author" content="트립페이지">
+	<meta name="language" content="Korean">  
+
+	<!-- Import Icon -->
+  	<link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
+
+	<!-- Import Style -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/swipe.min.css">
+
+</head>
+
+<!-- Navbar -->
+<nav class="navbar destination-navbar">
+	<div class="container">
+		<div class="navbar-bars">
+			<a href="#" class="navbar-title sidebar-toggle" style="padding: 0;"><i class="ion-navicon-round"></i></a>
+        	<a href="index.html" class="navbar-title">트립페이지</a>
+		</div>
+		<div class="navbar-item">
+			<a href="index.html" class="navbar-title">트립페이지</a>
+			<ul>
+		        <li><a href="destination.html">해외여행지</a></li>
+			    <li><a href="gallery.html">갤러리</a></li>
+			    <li><a href="index.html#discover">상품소개</a></li>
+			    <li><a href="news.html">뉴스</a></li>
+				<li><button class="btn-login" id="openLogin">로그인</button></li>
+  		  	</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar">
+<ul class="sidebar-list">
+	<li><a href="" class="close"><span class="ion-android-close"></span></a></li>
+	<li class="sidebar-list-hover"><a href="index.html">홈</a></li>
+    <li class="sidebar-list-hover"><a href="destination.html">해외여행지</a></li>
+    <li class="sidebar-list-hover"><a href="gallery.html">갤러리</a></li>
+    <li class="sidebar-list-hover"><a href="index.html#discover">상품소개</a></li>
+    <li class="sidebar-list-hover"><a href="news.html">뉴스</a></li>
+    <li><a class="btn btn-orange btn-round" href="login.html">로그인</a></li>
+</ul>                    
+</div>
+
+<!-- Sidebar Overlay -->
+<section class="sidebar-overlay"></section>
+
+<!-- Login Form -->
+
+<div class="login-form">
+	<div class="login-top">
+		<span class="close">&times;</span>
+	</div>
+	<div class="login">
+		<h3 class="text-center">
+			트립페이지 로그인
+		</h3>
+		<div class="form-input">
+			<label>이메일</label> <br>
+			<input type="email" name="" class="form-control">
+		</div>
+		<div class="form-input">
+			<label>비밀번호</label> <br>
+			<input type="password" name="" class="form-control">
+		</div>
+		<div class="form-input">
+			<button type="submit" class="btn btn-login">로그인</button>
+		</div>
+		<a href="" class="text-center">계정이 없으신가요? 회원가입하기</a>
+	</div>
+</div>
+
+<div class="login-overlay"></div>
+
+<section class="section-header-single">
+	<img src="img/bg-destination.jpg">
+	<div class="overlay">
+		<div class="header-title">
+			<h3>해외여행지 상품</h3>	
+			<span class="ion-record"></span>&nbsp;
+			<span class="ion-record"></span>&nbsp;
+			<span class="ion-record"></span>
+		</div>
+	</section>
+</section>
+
+<ul class="breadcrumb">
+  <li><a href="index.html">홈</a></li>
+  <li>해외여행지</li>
+</ul>
+
+<section class="section section-single">
+	<div class="container-fluid">
+		<div class="single-head">
+			<div class="col">
+				<img src="img/icon/destination.png">
+				<h3>지금 바로 당신의 해외여행지를 찾아보세요!</h3>
+				<p>합리적인 가격으로 제공되는 다양한 해외여행지 상품들입니다. 원하시는 여행지를 선택해주세요</p>
+			</div>
+			<div class="col-form">
+				<form method="POST">
+					
+				</form>
+			</div>
+		</div>
+		<div class="single-body" id="destinations-container">
+			<!-- 여행지 목록이 동적으로 로드됩니다 -->
+		</div>
+	</div>
+</section>
+
+<ul class="pagination">
+	<a href="#" class="pagination-arrow arrow-left">
+	   <span class="ion-ios-arrow-back"></span>
+	</a>
+	<a class="pagin-number active">1</a>
+	<a href="#" class="pagin-number">2</a>
+	<a href="#" class="pagin-number">3</li>
+	<a href="#" class="pagin-number">4</a>
+	<a href="#" class="pagin-number">5</a>
+	<a href="#" class="pagin-arrow arrow-right">
+	   <span class="ion-ios-arrow-forward"></span>
+	</a>
+</ul>
+
+<section class="section-footer">
+	<div class="texture-handler-top"></div>
+	<div class="row">
+		<div class="col-left">
+			<p>Copyright &copy; 2024 트립페이지</p>
+			<p>서울특별시 강남구 테헤란로 123<br>
+			전화 : 02-1234-5678<br>
+			이메일 : info@trippage.co.kr</p>
+			<a href="#" target="_blank"><span class="ion-social-facebook icon-social"></span></a>
+			<a href="#" target="_blank"><span class="ion-social-instagram icon-social"></span></a>
+			<a href="#" target="_blank"><span class="ion-social-twitter icon-social"></span></a>
+		</div>
+		<div class="col-right">
+			<b>해외여행 경험</b>
+			<ul>
+				<li><a href="#">자연여행</a></li>
+				<li><a href="#">문화체험</a></li>
+				<li><a href="#">종교여행</a></li>
+				<li><a href="#">맛집투어</a></li>
+				<li><a href="#">모험여행</a></li>
+			</ul>
+		</div>
+		<div class="col-right">
+			<b>해외여행 가이드</b>
+			<ul>
+				<li><a href="#">여행 가이드</a></li>
+				<li><a href="#">여행 상담</a></li>
+				<li><a href="#">숙박 예약</a></li>
+				<li><a href="#">경제 여행</a></li>
+			</ul>
+		</div>
+		<div class="col-right">
+			<b>최신 소식</b>
+			<ul>
+				<li><a href="#">뉴스</a></li>
+				<li><a href="#">이벤트</a></li>
+				<li><a href="#">여행 팁</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<p><a href="#" rel="noreferer" target="_blank">트립페이지</a> - 고객의 꿈을 현실로 만드는 해외여행 전문사</p>
+	</div>
+</section>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/swipe.js"></script>
+
+<script>
+// 여행지 목록 로드
+async function loadDestinations() {
+    try {
+        const response = await fetch('/api/destinations');
+        const destinations = await response.json();
+        
+        const container = document.getElementById('destinations-container');
+        container.innerHTML = '';
+        
+        destinations.forEach(destination => {
+            const priceDisplay = destination.price_max 
+                ? `₩ ${destination.price_min.toLocaleString()} - ₩ ${destination.price_max.toLocaleString()}`
+                : `₩ ${destination.price_min.toLocaleString()}`;
+            
+            // 별점 표시 생성
+            const rating = Math.floor(destination.rating);
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    starsHtml += '<span class="ion-ios-star checked"></span>';
+                } else {
+                    starsHtml += '<span class="ion-ios-star"></span>';
+                }
+            }
+            
+            const destinationHtml = `
+                <div class="col">
+                    <img src="${destination.image_url}" alt="${destination.name}">
+                    <div class="overlay">
+                        <div class="caption">
+                            <div class="caption-text">
+                                <p>${destination.name}</p>
+                                ${starsHtml} <br>
+                                <span class="ion-bag big"></span> &nbsp;
+                                <b>${priceDisplay}</b> <br>
+                                <a href="/destination/${destination.slug}" class="btn btn-orange btn-round">상세보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML += destinationHtml;
+        });
+    } catch (error) {
+        console.error('여행지 목록 로드 실패:', error);
+        const container = document.getElementById('destinations-container');
+        container.innerHTML = '<p style="text-align: center; color: #f25601; padding: 20px;">여행지 목록을 불러오는데 실패했습니다. 잠시 후 다시 시도해주세요.</p>';
+    }
+}
+
+// 페이지 로드 시 여행지 목록 로드
+document.addEventListener('DOMContentLoaded', loadDestinations);
+</script>
+</body>
+</html>

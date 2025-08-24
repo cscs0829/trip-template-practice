@@ -1,0 +1,11 @@
+DirectoryIndex index.html
+Options +Indexes
+
+# index.html이 없을 때 디렉토리 목록 표시
+IndexOptions FancyIndexing
+
+# 기본 문서 설정
+<Files "index.html">
+    Order allow,deny
+    Allow from all
+</Files>
