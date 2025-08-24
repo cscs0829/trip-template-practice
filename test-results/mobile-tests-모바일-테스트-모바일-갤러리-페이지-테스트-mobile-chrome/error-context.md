@@ -1,0 +1,223 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "" [ref=e5] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=e6] [cursor=pointer]: 
+      - link "트립페이지" [ref=e7] [cursor=pointer]:
+        - /url: index.html
+  - list [ref=e9]:
+    - listitem [ref=e10]:
+      - link "" [ref=e11] [cursor=pointer]:
+        - /url: ""
+        - generic [ref=e12] [cursor=pointer]: 
+    - listitem [ref=e13]:
+      - link "홈" [ref=e14] [cursor=pointer]:
+        - /url: index.html
+    - listitem [ref=e15]:
+      - link "해외여행지" [ref=e16] [cursor=pointer]:
+        - /url: destination.html
+    - listitem [ref=e17]:
+      - link "갤러리" [ref=e18] [cursor=pointer]:
+        - /url: gallery.html
+    - listitem [ref=e19]:
+      - link "상품소개" [ref=e20] [cursor=pointer]:
+        - /url: index.html#discover
+    - listitem [ref=e21]:
+      - link "뉴스" [ref=e22] [cursor=pointer]:
+        - /url: news.html
+    - listitem [ref=e23]:
+      - link "로그인" [ref=e24] [cursor=pointer]:
+        - /url: login.html
+  - generic [ref=e25]:
+    - img [ref=e26]
+    - generic [ref=e28]:
+      - heading "여행의 순간을 담다" [level=3] [ref=e29]
+      - generic [ref=e30]: 
+      - generic [ref=e31]: 
+      - generic [ref=e32]: 
+  - list [ref=e33]:
+    - listitem [ref=e34]:
+      - link "홈" [ref=e35] [cursor=pointer]:
+        - /url: index.html
+    - listitem [ref=e36]: ›갤러리
+  - generic [ref=e37]:
+    - generic [ref=e40]:
+      - heading "아름다운 여행 갤러리" [level=3] [ref=e41]
+      - paragraph [ref=e42]: 인스타그램에서 인기 있는 아름다운 여행의 순간들을 담은 갤러리입니다. 여행자들이 촬영한 생생한 사진들을 감상해보세요
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - link "" [ref=e45] [cursor=pointer]:
+          - /url: img/Gallery/22427484_369553130149066_8205756025140150272_n.jpg
+          - generic [ref=e48] [cursor=pointer]:
+            - img [ref=e49] [cursor=pointer]
+            - generic [ref=e51] [cursor=pointer]: 
+        - link "" [ref=e52] [cursor=pointer]:
+          - /url: img/Gallery/22709112_126847261368839_3816787601726111744_n.jpg
+          - generic [ref=e55] [cursor=pointer]:
+            - img [ref=e56] [cursor=pointer]
+            - generic [ref=e58] [cursor=pointer]: 
+        - link "" [ref=e59] [cursor=pointer]:
+          - /url: img/Gallery/28430212_200924710667049_7004971581080338432_n.jpg
+          - generic [ref=e62] [cursor=pointer]:
+            - img [ref=e63] [cursor=pointer]
+            - generic [ref=e65] [cursor=pointer]: 
+        - link "" [ref=e66] [cursor=pointer]:
+          - /url: img/Gallery/29087715_1693103334069013_7217753722737131520_n.jpg
+          - generic [ref=e69] [cursor=pointer]:
+            - img [ref=e70] [cursor=pointer]
+            - generic [ref=e72] [cursor=pointer]: 
+      - generic [ref=e73]:
+        - link "" [ref=e74] [cursor=pointer]:
+          - /url: img/Gallery/24175228_913344825485214_1747928750328119296_n.jpg
+          - generic [ref=e77] [cursor=pointer]:
+            - img [ref=e78] [cursor=pointer]
+            - generic [ref=e80] [cursor=pointer]: 
+        - link "" [ref=e81] [cursor=pointer]:
+          - /url: img/Gallery/23823687_523669887982025_4768024408549752832_n.jpg
+          - generic [ref=e84] [cursor=pointer]:
+            - img [ref=e85] [cursor=pointer]
+            - generic [ref=e87] [cursor=pointer]: 
+        - link "" [ref=e88] [cursor=pointer]:
+          - /url: img/Gallery/29415561_163922580940067_2417069708558729216_n.jpg
+          - generic [ref=e91] [cursor=pointer]:
+            - img [ref=e92] [cursor=pointer]
+            - generic [ref=e94] [cursor=pointer]: 
+        - link "" [ref=e95] [cursor=pointer]:
+          - /url: img/Gallery/27573391_1831430933557419_8533318736831053824_n.jpg
+          - generic [ref=e98] [cursor=pointer]:
+            - img [ref=e99] [cursor=pointer]
+            - generic [ref=e101] [cursor=pointer]: 
+        - link "" [ref=e102] [cursor=pointer]:
+          - /url: img/Gallery/28434752_386907991781375_9167553190177013760_n.jpg
+          - generic [ref=e105] [cursor=pointer]:
+            - img [ref=e106] [cursor=pointer]
+            - generic [ref=e108] [cursor=pointer]: 
+      - generic [ref=e109]:
+        - link "" [ref=e110] [cursor=pointer]:
+          - /url: img/Gallery/25015541_140076426774487_5369120968708980736_n.jpg
+          - generic [ref=e113] [cursor=pointer]:
+            - img [ref=e114] [cursor=pointer]
+            - generic [ref=e116] [cursor=pointer]: 
+        - link "" [ref=e117] [cursor=pointer]:
+          - /url: img/Gallery/25037337_1825448214419842_48033548438863872_n.jpg
+          - generic [ref=e120] [cursor=pointer]:
+            - img [ref=e121] [cursor=pointer]
+            - generic [ref=e123] [cursor=pointer]: 
+        - link "" [ref=e124] [cursor=pointer]:
+          - /url: img/Gallery/28753844_228354697736345_7723101941311471616_n.jpg
+          - generic [ref=e127] [cursor=pointer]:
+            - img [ref=e128] [cursor=pointer]
+            - generic [ref=e130] [cursor=pointer]: 
+        - link "" [ref=e131] [cursor=pointer]:
+          - /url: img/Gallery/26870845_1740142096076715_486825953067008000_n.jpg
+          - generic [ref=e134] [cursor=pointer]:
+            - img [ref=e135] [cursor=pointer]
+            - generic [ref=e137] [cursor=pointer]: 
+      - generic [ref=e138]:
+        - link "" [ref=e139] [cursor=pointer]:
+          - /url: img/Gallery/27880266_1798970387070331_5621832064107020288_n.jpg
+          - generic [ref=e142] [cursor=pointer]:
+            - img [ref=e143] [cursor=pointer]
+            - generic [ref=e145] [cursor=pointer]: 
+        - link "" [ref=e146] [cursor=pointer]:
+          - /url: img/Gallery/29089828_175705203229064_354079736697192448_n.jpg
+          - generic [ref=e149] [cursor=pointer]:
+            - img [ref=e150] [cursor=pointer]
+            - generic [ref=e152] [cursor=pointer]: 
+        - link "" [ref=e153] [cursor=pointer]:
+          - /url: img/Gallery/27573391_1831430933557419_8533318736831053824_n.jpg
+          - generic [ref=e156] [cursor=pointer]:
+            - img [ref=e157] [cursor=pointer]
+            - generic [ref=e159] [cursor=pointer]: 
+        - link "" [ref=e160] [cursor=pointer]:
+          - /url: img/Gallery/29415561_163922580940067_2417069708558729216_n.jpg
+          - generic [ref=e163] [cursor=pointer]:
+            - img [ref=e164] [cursor=pointer]
+            - generic [ref=e166] [cursor=pointer]: 
+  - list [ref=e167]:
+    - link "" [ref=e168] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e169] [cursor=pointer]: 
+    - generic [ref=e170] [cursor=pointer]: "1"
+    - link "2" [ref=e171] [cursor=pointer]:
+      - /url: "#"
+    - link "3" [ref=e172] [cursor=pointer]:
+      - /url: "#"
+    - link "4" [ref=e173] [cursor=pointer]:
+      - /url: "#"
+    - link "5" [ref=e174] [cursor=pointer]:
+      - /url: "#"
+    - link "" [ref=e175] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e176] [cursor=pointer]: 
+  - generic [ref=e177]:
+    - generic [ref=e179]:
+      - generic [ref=e180]:
+        - paragraph [ref=e181]: Copyright © 2024 트립페이지
+        - paragraph [ref=e182]:
+          - text: 서울특별시 강남구 테헤란로 123
+          - text: "전화 : 02-1234-5678"
+          - text: "이메일 : info@trippage.co.kr"
+        - link "" [ref=e183] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e184] [cursor=pointer]: 
+        - link "" [ref=e185] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e186] [cursor=pointer]: 
+        - link "" [ref=e187] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e188] [cursor=pointer]: 
+      - generic [ref=e189]:
+        - generic [ref=e190]: 여행 경험
+        - list [ref=e191]:
+          - listitem [ref=e192]:
+            - link "자연여행" [ref=e193] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e194]:
+            - link "문화체험" [ref=e195] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e196]:
+            - link "종교여행" [ref=e197] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e198]:
+            - link "맛집투어" [ref=e199] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e200]:
+            - link "모험여행" [ref=e201] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e202]:
+        - generic [ref=e203]: 여행 가이드
+        - list [ref=e204]:
+          - listitem [ref=e205]:
+            - link "여행 가이드" [ref=e206] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e207]:
+            - link "여행 상담" [ref=e208] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e209]:
+            - link "숙박 예약" [ref=e210] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e211]:
+            - link "경제 여행" [ref=e212] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e213]:
+        - generic [ref=e214]: 최신 소식
+        - list [ref=e215]:
+          - listitem [ref=e216]:
+            - link "뉴스" [ref=e217] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e218]:
+            - link "이벤트" [ref=e219] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e220]:
+            - link "여행 팁" [ref=e221] [cursor=pointer]:
+              - /url: "#"
+    - paragraph [ref=e223]:
+      - link "트립페이지" [ref=e224] [cursor=pointer]:
+        - /url: "#"
+      - text: "- 고객의 꿈을 현실로 만드는 여행사"
+```

@@ -1,0 +1,45 @@
+{
+  "name": "trippage-backend",
+  "version": "1.0.0",
+  "description": "트립페이지 백엔드 API 서버",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "echo 'No build step required'",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:mobile": "playwright test --project=mobile",
+    "test:desktop": "playwright test --project=desktop",
+    "test:api": "playwright test api-tests.spec.js",
+    "test:ui": "playwright test ui-tests.spec.js",
+    "test:db": "playwright test db-tests.spec.js",
+    "test:all": "playwright test --reporter=html",
+    "playwright:install": "playwright install",
+    "playwright:codegen": "playwright codegen http://localhost:3000"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "helmet": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "@playwright/test": "^1.40.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "travel",
+    "tourism",
+    "api",
+    "nodejs",
+    "express",
+    "postgresql"
+  ],
+  "author": "트립페이지",
+  "license": "MIT"
+}
