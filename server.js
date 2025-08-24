@@ -23,7 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // 정적 파일 제공 설정
-app.use(express.static(__dirname));
+// Render 환경에서는 __dirname이 /opt/render/project/src이므로 trippage 폴더를 직접 서빙
+app.use(express.static(path.join(__dirname, 'trippage')));
+// CSS, JS, 이미지 등의 정적 파일들을 위해 trippage 폴더를 루트로 설정
+app.use('/css', express.static(path.join(__dirname, 'trippage', 'css')));
+app.use('/js', express.static(path.join(__dirname, 'trippage', 'js')));
+app.use('/img', express.static(path.join(__dirname, 'trippage', 'img')));
+app.use('/fonts', express.static(path.join(__dirname, 'trippage', 'fonts')));
 
 // API 라우트
 
@@ -126,48 +132,81 @@ app.get('/api/gallery', async (req, res) => {
 
 // HTML 파일 경로 설정
 const getHtmlPath = (filename) => {
-  return path.join(__dirname, 'trippage', filename);
+  const fullPath = path.join(__dirname, 'trippage', filename);
+  console.log(`Attempting to serve file: ${fullPath}`);
+  return fullPath;
+};
+
+// HTML 파일 전송 헬퍼 함수
+const sendHtmlFile = (res, filename) => {
+  const filePath = getHtmlPath(filename);
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error(`Error serving ${filename}:`, err);
+      res.status(500).send(`파일을 찾을 수 없습니다: ${filename}`);
+    }
+  });
 };
 
 // 메인 페이지 라우트
 app.get('/', (req, res) => {
-  res.sendFile(getHtmlPath('index.html'));
+  sendHtmlFile(res, 'index.html');
 });
 
 // 여행지 목록 페이지
 app.get('/destination', (req, res) => {
-  res.sendFile(getHtmlPath('destination.html'));
+  sendHtmlFile(res, 'destination.html');
 });
 
 // 여행지 상세 페이지 (동적 라우팅)
 app.get('/destination/:slug', (req, res) => {
-  res.sendFile(getHtmlPath('single-destination.html'));
+  sendHtmlFile(res, 'single-destination.html');
 });
 
 // 갤러리 페이지
 app.get('/gallery', (req, res) => {
-  res.sendFile(getHtmlPath('gallery.html'));
+  sendHtmlFile(res, 'gallery.html');
 });
 
 // 뉴스 페이지
 app.get('/news', (req, res) => {
-  res.sendFile(getHtmlPath('news.html'));
+  sendHtmlFile(res, 'news.html');
 });
 
 // 뉴스 상세 페이지
 app.get('/news/:slug', (req, res) => {
-  res.sendFile(getHtmlPath('single-news.html'));
+  sendHtmlFile(res, 'single-news.html');
 });
 
 // 404 에러 처리
 app.use((req, res) => {
-  res.status(404).sendFile(getHtmlPath('index.html'));
+  res.status(404);
+  sendHtmlFile(res, 'index.html');
 });
 
 // 서버 시작
 app.listen(PORT, () => {
   console.log(`서버가 포트 ${PORT}에서 실행중입니다.`);
   console.log(`http://localhost:${PORT}`);
+  console.log(`Current directory: ${__dirname}`);
+  console.log(`Looking for trippage files at: ${path.join(__dirname, 'trippage')}`);
+  
+  // 파일 시스템 확인
+  const fs = require('fs');
+  try {
+    const files = fs.readdirSync(__dirname);
+    console.log('Files in current directory:', files);
+    
+    const trippagePath = path.join(__dirname, 'trippage');
+    if (fs.existsSync(trippagePath)) {
+      const trippageFiles = fs.readdirSync(trippagePath);
+      console.log('Files in trippage directory:', trippageFiles);
+    } else {
+      console.log('trippage directory does not exist!');
+    }
+  } catch (error) {
+    console.error('Error reading directory:', error);
+  }
 });
 
 // 데이터베이스 연결 테스트
