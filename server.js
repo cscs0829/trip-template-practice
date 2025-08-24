@@ -23,10 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // 정적 파일 제공 설정
-const staticPath = process.env.NODE_ENV === 'production' 
-  ? path.join(__dirname, 'src') 
-  : __dirname;
-app.use(express.static(staticPath));
+app.use(express.static(__dirname));
 
 // API 라우트
 
@@ -129,10 +126,7 @@ app.get('/api/gallery', async (req, res) => {
 
 // HTML 파일 경로 설정
 const getHtmlPath = (filename) => {
-  const trippageDir = process.env.NODE_ENV === 'production' 
-    ? path.join(__dirname, 'src', 'trippage') 
-    : path.join(__dirname, 'trippage');
-  return path.join(trippageDir, filename);
+  return path.join(__dirname, 'trippage', filename);
 };
 
 // 메인 페이지 라우트

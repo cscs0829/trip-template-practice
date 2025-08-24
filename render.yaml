@@ -9,7 +9,7 @@ services:
     name: trippage-web
     env: node
     plan: free
-    buildCommand: npm install && mkdir -p src && cp -r trippage src/trippage
+    buildCommand: npm install
     startCommand: npm start
     envVars:
       - key: NODE_ENV
