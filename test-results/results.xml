@@ -1,0 +1,282 @@
+<testsuites id="" name="" tests="15" failures="0" skipped="0" errors="0" time="33.684188">
+<testsuite name="debug-test.spec.js" timestamp="2025-08-24T08:52:43.581Z" hostname="chromium" tests="3" failures="0" skipped="0" time="12.258" errors="0">
+<testcase name="웹사이트 디버깅 테스트 › Render 배포된 사이트 상태 확인" classname="debug-test.spec.js" time="4.589">
+<system-out>
+<![CDATA[=== Render 사이트 접속 테스트 시작 ===
+Render 사이트 접속 중...
+응답 상태: 500
+응답 URL: https://trippage-web.onrender.com/
+페이지 내용 길이: [33m64[39m
+페이지 텍스트: 파일을 찾을 수 없습니다: index.html
+HTML 구조: [
+  {
+    "tagName": "HTML",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  },
+  {
+    "tagName": "HEAD",
+    "className": "",
+    "id": "",
+    "textContent": ""
+  },
+  {
+    "tagName": "BODY",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › 로컬 서버와 비교 테스트" classname="debug-test.spec.js" time="5.738">
+<system-out>
+<![CDATA[=== 로컬 서버 테스트 시작 ===
+로컬 서버 접속 시도...
+로컬 서버 응답 상태: 200
+로컬 페이지 내용 길이: [33m16644[39m
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › API 엔드포인트 테스트" classname="debug-test.spec.js" time="1.931">
+<system-out>
+<![CDATA[=== API 엔드포인트 테스트 시작 ===
+테스트 중: /api/destinations
+/api/destinations: 500
+테스트 중: /api/news
+/api/news: 500
+테스트 중: /api/gallery
+/api/gallery: 500
+테스트 중: /api/popular-tours
+/api/popular-tours: 500
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="debug-test.spec.js" timestamp="2025-08-24T08:52:43.581Z" hostname="firefox" tests="3" failures="0" skipped="0" time="21.58" errors="0">
+<testcase name="웹사이트 디버깅 테스트 › Render 배포된 사이트 상태 확인" classname="debug-test.spec.js" time="9.533">
+<system-out>
+<![CDATA[=== Render 사이트 접속 테스트 시작 ===
+Render 사이트 접속 중...
+응답 상태: 500
+응답 URL: https://trippage-web.onrender.com/
+페이지 내용 길이: [33m64[39m
+페이지 텍스트: 파일을 찾을 수 없습니다: index.html
+HTML 구조: [
+  {
+    "tagName": "HTML",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  },
+  {
+    "tagName": "HEAD",
+    "className": "",
+    "id": "",
+    "textContent": ""
+  },
+  {
+    "tagName": "BODY",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › 로컬 서버와 비교 테스트" classname="debug-test.spec.js" time="10.519">
+<system-out>
+<![CDATA[=== 로컬 서버 테스트 시작 ===
+로컬 서버 접속 시도...
+로컬 서버 응답 상태: 200
+로컬 페이지 내용 길이: [33m16584[39m
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › API 엔드포인트 테스트" classname="debug-test.spec.js" time="1.528">
+<system-out>
+<![CDATA[=== API 엔드포인트 테스트 시작 ===
+테스트 중: /api/destinations
+/api/destinations: 500
+테스트 중: /api/news
+/api/news: 500
+테스트 중: /api/gallery
+/api/gallery: 500
+테스트 중: /api/popular-tours
+/api/popular-tours: 500
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="debug-test.spec.js" timestamp="2025-08-24T08:52:43.581Z" hostname="webkit" tests="3" failures="0" skipped="0" time="12.683" errors="0">
+<testcase name="웹사이트 디버깅 테스트 › Render 배포된 사이트 상태 확인" classname="debug-test.spec.js" time="3.99">
+<system-out>
+<![CDATA[=== Render 사이트 접속 테스트 시작 ===
+Render 사이트 접속 중...
+응답 상태: 500
+응답 URL: https://trippage-web.onrender.com/
+페이지 내용 길이: [33m64[39m
+페이지 텍스트: 파일을 찾을 수 없습니다: index.html
+HTML 구조: [
+  {
+    "tagName": "HTML",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  },
+  {
+    "tagName": "HEAD",
+    "className": "",
+    "id": "",
+    "textContent": ""
+  },
+  {
+    "tagName": "BODY",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › 로컬 서버와 비교 테스트" classname="debug-test.spec.js" time="6.861">
+<system-out>
+<![CDATA[=== 로컬 서버 테스트 시작 ===
+로컬 서버 접속 시도...
+로컬 서버 응답 상태: 200
+로컬 페이지 내용 길이: [33m16644[39m
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › API 엔드포인트 테스트" classname="debug-test.spec.js" time="1.832">
+<system-out>
+<![CDATA[=== API 엔드포인트 테스트 시작 ===
+테스트 중: /api/destinations
+/api/destinations: 500
+테스트 중: /api/news
+/api/news: 500
+테스트 중: /api/gallery
+/api/gallery: 500
+테스트 중: /api/popular-tours
+/api/popular-tours: 500
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="debug-test.spec.js" timestamp="2025-08-24T08:52:43.581Z" hostname="mobile-chrome" tests="3" failures="0" skipped="0" time="15.86" errors="0">
+<testcase name="웹사이트 디버깅 테스트 › Render 배포된 사이트 상태 확인" classname="debug-test.spec.js" time="3.452">
+<system-out>
+<![CDATA[=== Render 사이트 접속 테스트 시작 ===
+Render 사이트 접속 중...
+응답 상태: 500
+응답 URL: https://trippage-web.onrender.com/
+페이지 내용 길이: [33m64[39m
+페이지 텍스트: 파일을 찾을 수 없습니다: index.html
+HTML 구조: [
+  {
+    "tagName": "HTML",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  },
+  {
+    "tagName": "HEAD",
+    "className": "",
+    "id": "",
+    "textContent": ""
+  },
+  {
+    "tagName": "BODY",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › 로컬 서버와 비교 테스트" classname="debug-test.spec.js" time="10.906">
+<system-out>
+<![CDATA[=== 로컬 서버 테스트 시작 ===
+로컬 서버 접속 시도...
+로컬 서버 응답 상태: 200
+로컬 페이지 내용 길이: [33m16643[39m
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › API 엔드포인트 테스트" classname="debug-test.spec.js" time="1.502">
+<system-out>
+<![CDATA[=== API 엔드포인트 테스트 시작 ===
+테스트 중: /api/destinations
+/api/destinations: 500
+테스트 중: /api/news
+/api/news: 500
+테스트 중: /api/gallery
+/api/gallery: 500
+테스트 중: /api/popular-tours
+/api/popular-tours: 500
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="debug-test.spec.js" timestamp="2025-08-24T08:52:43.581Z" hostname="mobile-safari" tests="3" failures="0" skipped="0" time="11.456" errors="0">
+<testcase name="웹사이트 디버깅 테스트 › Render 배포된 사이트 상태 확인" classname="debug-test.spec.js" time="3.759">
+<system-out>
+<![CDATA[=== Render 사이트 접속 테스트 시작 ===
+Render 사이트 접속 중...
+응답 상태: 500
+응답 URL: https://trippage-web.onrender.com/
+페이지 내용 길이: [33m64[39m
+페이지 텍스트: 파일을 찾을 수 없습니다: index.html
+HTML 구조: [
+  {
+    "tagName": "HTML",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  },
+  {
+    "tagName": "HEAD",
+    "className": "",
+    "id": "",
+    "textContent": ""
+  },
+  {
+    "tagName": "BODY",
+    "className": "",
+    "id": "",
+    "textContent": "파일을 찾을 수 없습니다: index.html"
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › 로컬 서버와 비교 테스트" classname="debug-test.spec.js" time="5.998">
+<system-out>
+<![CDATA[=== 로컬 서버 테스트 시작 ===
+로컬 서버 접속 시도...
+로컬 서버 응답 상태: 200
+로컬 페이지 내용 길이: [33m16643[39m
+]]>
+</system-out>
+</testcase>
+<testcase name="웹사이트 디버깅 테스트 › API 엔드포인트 테스트" classname="debug-test.spec.js" time="1.699">
+<system-out>
+<![CDATA[=== API 엔드포인트 테스트 시작 ===
+테스트 중: /api/destinations
+/api/destinations: 500
+테스트 중: /api/news
+/api/news: 500
+테스트 중: /api/gallery
+/api/gallery: 500
+테스트 중: /api/popular-tours
+/api/popular-tours: 500
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

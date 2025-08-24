@@ -1,0 +1,987 @@
+{
+  "config": {
+    "configFile": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/playwright.config.js",
+    "rootDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/results.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "mobile-safari",
+        "name": "mobile-safari",
+        "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 4,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:3000",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "debug-test.spec.js",
+      "file": "debug-test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "웹사이트 디버깅 테스트",
+          "file": "debug-test.spec.js",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Render 배포된 사이트 상태 확인",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4589,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== Render 사이트 접속 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "Render 사이트 접속 중...\n"
+                        },
+                        {
+                          "text": "응답 상태: 500\n"
+                        },
+                        {
+                          "text": "응답 URL: https://trippage-web.onrender.com/\n"
+                        },
+                        {
+                          "text": "페이지 내용 길이: \u001b[33m64\u001b[39m\n"
+                        },
+                        {
+                          "text": "페이지 텍스트: 파일을 찾을 수 없습니다: index.html\n"
+                        },
+                        {
+                          "text": "HTML 구조: [\n  {\n    \"tagName\": \"HTML\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  },\n  {\n    \"tagName\": \"HEAD\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"\"\n  },\n  {\n    \"tagName\": \"BODY\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  }\n]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:52:44.444Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-0f81b35b7ee81aed41d1",
+              "file": "debug-test.spec.js",
+              "line": 4,
+              "column": 3
+            },
+            {
+              "title": "로컬 서버와 비교 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5738,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== 로컬 서버 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "로컬 서버 접속 시도...\n"
+                        },
+                        {
+                          "text": "로컬 서버 응답 상태: 200\n"
+                        },
+                        {
+                          "text": "로컬 페이지 내용 길이: \u001b[33m16644\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:52:44.444Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-54ecbddd3a48038cd73d",
+              "file": "debug-test.spec.js",
+              "line": 72,
+              "column": 3
+            },
+            {
+              "title": "API 엔드포인트 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1931,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== API 엔드포인트 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/destinations\n"
+                        },
+                        {
+                          "text": "/api/destinations: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/news\n"
+                        },
+                        {
+                          "text": "/api/news: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/gallery\n"
+                        },
+                        {
+                          "text": "/api/gallery: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/popular-tours\n"
+                        },
+                        {
+                          "text": "/api/popular-tours: 500\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:52:44.463Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-f71da8d386808f126b86",
+              "file": "debug-test.spec.js",
+              "line": 97,
+              "column": 3
+            },
+            {
+              "title": "Render 배포된 사이트 상태 확인",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 9533,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== Render 사이트 접속 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "Render 사이트 접속 중...\n"
+                        },
+                        {
+                          "text": "응답 상태: 500\n"
+                        },
+                        {
+                          "text": "응답 URL: https://trippage-web.onrender.com/\n"
+                        },
+                        {
+                          "text": "페이지 내용 길이: \u001b[33m64\u001b[39m\n"
+                        },
+                        {
+                          "text": "페이지 텍스트: 파일을 찾을 수 없습니다: index.html\n"
+                        },
+                        {
+                          "text": "HTML 구조: [\n  {\n    \"tagName\": \"HTML\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  },\n  {\n    \"tagName\": \"HEAD\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"\"\n  },\n  {\n    \"tagName\": \"BODY\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  }\n]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:52:44.426Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-91a8bcbc76a12e1ccc8a",
+              "file": "debug-test.spec.js",
+              "line": 4,
+              "column": 3
+            },
+            {
+              "title": "로컬 서버와 비교 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 10519,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== 로컬 서버 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "로컬 서버 접속 시도...\n"
+                        },
+                        {
+                          "text": "로컬 서버 응답 상태: 200\n"
+                        },
+                        {
+                          "text": "로컬 페이지 내용 길이: \u001b[33m16584\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:52:51.036Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-edce761a8f1f5c98385b",
+              "file": "debug-test.spec.js",
+              "line": 72,
+              "column": 3
+            },
+            {
+              "title": "API 엔드포인트 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1528,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== API 엔드포인트 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/destinations\n"
+                        },
+                        {
+                          "text": "/api/destinations: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/news\n"
+                        },
+                        {
+                          "text": "/api/news: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/gallery\n"
+                        },
+                        {
+                          "text": "/api/gallery: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/popular-tours\n"
+                        },
+                        {
+                          "text": "/api/popular-tours: 500\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:52:52.903Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-bc5ee4dbafb7a73b2d44",
+              "file": "debug-test.spec.js",
+              "line": 97,
+              "column": 3
+            },
+            {
+              "title": "Render 배포된 사이트 상태 확인",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3990,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== Render 사이트 접속 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "Render 사이트 접속 중...\n"
+                        },
+                        {
+                          "text": "응답 상태: 500\n"
+                        },
+                        {
+                          "text": "응답 URL: https://trippage-web.onrender.com/\n"
+                        },
+                        {
+                          "text": "페이지 내용 길이: \u001b[33m64\u001b[39m\n"
+                        },
+                        {
+                          "text": "페이지 텍스트: 파일을 찾을 수 없습니다: index.html\n"
+                        },
+                        {
+                          "text": "HTML 구조: [\n  {\n    \"tagName\": \"HTML\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  },\n  {\n    \"tagName\": \"HEAD\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"\"\n  },\n  {\n    \"tagName\": \"BODY\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  }\n]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:52:53.568Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-141ead9bf11e0691c42a",
+              "file": "debug-test.spec.js",
+              "line": 4,
+              "column": 3
+            },
+            {
+              "title": "로컬 서버와 비교 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6861,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== 로컬 서버 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "로컬 서버 접속 시도...\n"
+                        },
+                        {
+                          "text": "로컬 서버 응답 상태: 200\n"
+                        },
+                        {
+                          "text": "로컬 페이지 내용 길이: \u001b[33m16644\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:52:56.684Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-a6898194fe7c4d46f749",
+              "file": "debug-test.spec.js",
+              "line": 72,
+              "column": 3
+            },
+            {
+              "title": "API 엔드포인트 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1832,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== API 엔드포인트 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/destinations\n"
+                        },
+                        {
+                          "text": "/api/destinations: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/news\n"
+                        },
+                        {
+                          "text": "/api/news: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/gallery\n"
+                        },
+                        {
+                          "text": "/api/gallery: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/popular-tours\n"
+                        },
+                        {
+                          "text": "/api/popular-tours: 500\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:52:59.408Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-e4957f17ad4580493771",
+              "file": "debug-test.spec.js",
+              "line": 97,
+              "column": 3
+            },
+            {
+              "title": "Render 배포된 사이트 상태 확인",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3452,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== Render 사이트 접속 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "Render 사이트 접속 중...\n"
+                        },
+                        {
+                          "text": "응답 상태: 500\n"
+                        },
+                        {
+                          "text": "응답 URL: https://trippage-web.onrender.com/\n"
+                        },
+                        {
+                          "text": "페이지 내용 길이: \u001b[33m64\u001b[39m\n"
+                        },
+                        {
+                          "text": "페이지 텍스트: 파일을 찾을 수 없습니다: index.html\n"
+                        },
+                        {
+                          "text": "HTML 구조: [\n  {\n    \"tagName\": \"HTML\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  },\n  {\n    \"tagName\": \"HEAD\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"\"\n  },\n  {\n    \"tagName\": \"BODY\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  }\n]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:53:01.190Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-08b6ea059c98bcd2ca10",
+              "file": "debug-test.spec.js",
+              "line": 4,
+              "column": 3
+            },
+            {
+              "title": "로컬 서버와 비교 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 10906,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== 로컬 서버 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "로컬 서버 접속 시도...\n"
+                        },
+                        {
+                          "text": "로컬 서버 응답 상태: 200\n"
+                        },
+                        {
+                          "text": "로컬 페이지 내용 길이: \u001b[33m16643\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:53:04.216Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-7e45c203f54916fcf34d",
+              "file": "debug-test.spec.js",
+              "line": 72,
+              "column": 3
+            },
+            {
+              "title": "API 엔드포인트 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1502,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== API 엔드포인트 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/destinations\n"
+                        },
+                        {
+                          "text": "/api/destinations: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/news\n"
+                        },
+                        {
+                          "text": "/api/news: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/gallery\n"
+                        },
+                        {
+                          "text": "/api/gallery: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/popular-tours\n"
+                        },
+                        {
+                          "text": "/api/popular-tours: 500\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:53:06.620Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-e7b654feef32746f2329",
+              "file": "debug-test.spec.js",
+              "line": 97,
+              "column": 3
+            },
+            {
+              "title": "Render 배포된 사이트 상태 확인",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-safari",
+                  "projectName": "mobile-safari",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3759,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== Render 사이트 접속 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "Render 사이트 접속 중...\n"
+                        },
+                        {
+                          "text": "응답 상태: 500\n"
+                        },
+                        {
+                          "text": "응답 URL: https://trippage-web.onrender.com/\n"
+                        },
+                        {
+                          "text": "페이지 내용 길이: \u001b[33m64\u001b[39m\n"
+                        },
+                        {
+                          "text": "페이지 텍스트: 파일을 찾을 수 없습니다: index.html\n"
+                        },
+                        {
+                          "text": "HTML 구조: [\n  {\n    \"tagName\": \"HTML\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  },\n  {\n    \"tagName\": \"HEAD\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"\"\n  },\n  {\n    \"tagName\": \"BODY\",\n    \"className\": \"\",\n    \"id\": \"\",\n    \"textContent\": \"파일을 찾을 수 없습니다: index.html\"\n  }\n]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:53:06.188Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-5104d846a0d757d678bd",
+              "file": "debug-test.spec.js",
+              "line": 4,
+              "column": 3
+            },
+            {
+              "title": "로컬 서버와 비교 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-safari",
+                  "projectName": "mobile-safari",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5998,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== 로컬 서버 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "로컬 서버 접속 시도...\n"
+                        },
+                        {
+                          "text": "로컬 서버 응답 상태: 200\n"
+                        },
+                        {
+                          "text": "로컬 페이지 내용 길이: \u001b[33m16643\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:53:08.018Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-95bbaf05c573f7105276",
+              "file": "debug-test.spec.js",
+              "line": 72,
+              "column": 3
+            },
+            {
+              "title": "API 엔드포인트 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-safari",
+                  "projectName": "mobile-safari",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1699,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "=== API 엔드포인트 테스트 시작 ===\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/destinations\n"
+                        },
+                        {
+                          "text": "/api/destinations: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/news\n"
+                        },
+                        {
+                          "text": "/api/news: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/gallery\n"
+                        },
+                        {
+                          "text": "/api/gallery: 500\n"
+                        },
+                        {
+                          "text": "테스트 중: /api/popular-tours\n"
+                        },
+                        {
+                          "text": "/api/popular-tours: 500\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T08:53:11.417Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5bff1c2ade5a6b3b1212-1fc88ef94164cb601e9d",
+              "file": "debug-test.spec.js",
+              "line": 97,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-24T08:52:42.424Z",
+    "duration": 33684.188,
+    "expected": 15,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

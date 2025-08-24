@@ -33,6 +33,53 @@ app.use('/fonts', express.static(path.join(__dirname, 'trippage', 'fonts')));
 
 // API 라우트
 
+// 디버깅 엔드포인트 추가
+app.get('/api/debug/server-info', (req, res) => {
+  const fs = require('fs');
+  
+  try {
+    const debugInfo = {
+      currentDirectory: __dirname,
+      nodeEnv: process.env.NODE_ENV,
+      port: PORT,
+      timestamp: new Date().toISOString()
+    };
+    
+    // 현재 디렉토리 파일 목록
+    try {
+      debugInfo.rootFiles = fs.readdirSync(__dirname);
+    } catch (error) {
+      debugInfo.rootFilesError = error.message;
+    }
+    
+    // trippage 디렉토리 확인
+    const trippagePath = path.join(__dirname, 'trippage');
+    try {
+      if (fs.existsSync(trippagePath)) {
+        debugInfo.trippageExists = true;
+        debugInfo.trippageFiles = fs.readdirSync(trippagePath);
+        
+        // index.html 파일 확인
+        const indexPath = path.join(trippagePath, 'index.html');
+        debugInfo.indexHtmlExists = fs.existsSync(indexPath);
+        if (debugInfo.indexHtmlExists) {
+          const stats = fs.statSync(indexPath);
+          debugInfo.indexHtmlSize = stats.size;
+          debugInfo.indexHtmlModified = stats.mtime;
+        }
+      } else {
+        debugInfo.trippageExists = false;
+      }
+    } catch (error) {
+      debugInfo.trippageError = error.message;
+    }
+    
+    res.json(debugInfo);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // 모든 여행지 목록 조회
 app.get('/api/destinations', async (req, res) => {
   try {
