@@ -59,6 +59,32 @@ CREATE TABLE news (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- 게시판 테이블 (Q&A/자유게시판 등)
+CREATE TABLE IF NOT EXISTS board_posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(500) NOT NULL,
+    content TEXT NOT NULL,
+    image_url VARCHAR(500),
+    category VARCHAR(100),
+    author_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
+    author_name VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 사용자 테이블 생성 (토스 스타일 - 나이, 성별 추가)
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    age INTEGER,
+    gender VARCHAR(10) CHECK (gender IN ('male', 'female')),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- 초기 데이터 삽입
 INSERT INTO destinations (name, title, description, highlights, price_min, price_max, rating, image_url, location_info, schedule, min_participants, max_participants, includes, slug) VALUES
 ('발리 울룬다누 사원', '발리 울룬다누 사원', '발리의 아름다운 호수 위에 자리잡은 신성한 사원을 방문하여 평온함과 영적인 경험을 느껴보세요.', 

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Q&A 게시판 - 트립페이지</title>
+	<link rel="icon" type="image/png" href="img/icon/bavel.png">
+
+	<!-- Meta Description -->
+	<meta name="description" content="트립페이지 - 여행 관련 Q&A 게시판, 여행 궁금증 해결">
+	<meta name="keywords" content="여행, 여행상품, 여행사, 여행정보, 여행가이드, Q&A, 여행질문">
+	<meta name="robots" content="index, nofollow">
+	<meta name="web_author" content="트립페이지">
+	<meta name="language" content="Korean">  
+
+	<!-- Import Icon -->
+  	<link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
+
+	<!-- Import Style -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/swiper.css">
+	<link rel="stylesheet" type="text/css" href="css/board.css">
+</head>
+<body>
+
+<!-- Reusable Navbar -->
+<script type="text/javascript" src="js/navbar.js"></script>
+<script>renderNavbar('news');</script>
+
+<!-- 공용 사이드바(navbar.js)로 대체됨 -->
+
+<!-- Main Content -->
+<section class="section-header-single">
+	<img src="img/bg-news.jpg">
+	<div class="overlay">
+		<div class="header-title">
+			<h3>Q&A 게시판</h3>	
+			<span class="ion-record"></span>&nbsp;
+			<span class="ion-record"></span>&nbsp;
+			<span class="ion-record"></span>
+		</div>
+	</div>
+</section>
+
+<ul class="breadcrumb">
+	<li><a href="index.html">홈</a></li>
+	<li>Q&A 게시판</li>
+</ul>
+	
+	<!-- Q&A 게시판 소개 섹션 -->
+	<section class="section section-single">
+		<div class="container-fluid">
+			<div class="single-head">
+				<div class="col">
+					<img src="img/icon/bavel.png">
+					<h3>여행에 대한 모든 질문을 해주세요!</h3>
+					<p>여행 준비부터 현지 정보까지, 궁금한 모든 것을 물어보세요. 여행 전문가들과 함께 답변을 찾아보는 공간입니다</p>
+				</div>
+				<div class="col-form">
+					<button id="openPostModal" class="btn btn-orange btn-round">글쓰기</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<div class="news-main-content">
+	<div class="news-container">
+		<div class="news-content">
+			<!-- 탭 네비게이션 -->
+			<div class="news-tabs">
+				<button class="tab-button active" data-tab="all">전체</button>
+				<button class="tab-button" data-tab="faq">자주묻는질문</button>
+				<button class="tab-button" data-tab="qna">질문과답변</button>
+				<button class="tab-button" data-tab="my">내 문의</button>
+			</div>
+			
+			<!-- 탭 콘텐츠 -->
+			<div class="tab-content active" id="tab-all">
+				<div class="news-header">
+					<div class="news-title">전체 게시글</div>
+					<div class="news-subtitle">모든 게시글을 확인하세요</div>
+				</div>
+				<div id="board-list" class="news-board-list">
+					<p style="text-align: center; padding: 20px; color: #666;">첫 글의 주인공이 되어보세요!</p>
+				</div>
+			</div>
+			
+			<div class="tab-content" id="tab-faq">
+				<div class="news-header">
+					<div class="news-title">자주 묻는 질문</div>
+					<div class="news-subtitle">자주 묻는 질문들을 확인하세요</div>
+				</div>
+				<div class="faq-list">
+					<div class="faq-item">
+						<h4>여행 준비는 언제부터 해야 하나요?</h4>
+						<p>해외여행의 경우 최소 3개월, 국내여행의 경우 1개월 전부터 준비하는 것을 권장합니다.</p>
+					</div>
+					<div class="faq-item">
+						<h4>여권은 언제 발급받아야 하나요?</h4>
+						<p>여권 발급은 여행 출발일로부터 최소 2주 전에 신청하시기 바랍니다.</p>
+					</div>
+					<div class="faq-item">
+						<h4>여행자보험은 필수인가요?</h4>
+						<p>해외여행의 경우 여행자보험 가입을 강력히 권장합니다.</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="tab-content" id="tab-qna">
+				<div class="news-header">
+					<div class="news-title">질문과 답변</div>
+					<div class="news-subtitle">여행에 대한 질문과 정보를 자유롭게 공유하세요</div>
+				</div>
+				<div id="board-list-qna" class="news-board-list">
+					<p style="text-align: center; padding: 20px; color: #666;">질문과 답변 게시글을 확인하세요</p>
+				</div>
+			</div>
+			
+			<div class="tab-content" id="tab-my">
+				<div class="news-header">
+					<div class="news-title">내 문의</div>
+					<div class="news-subtitle">내가 작성한 문의글을 확인하세요</div>
+				</div>
+				<div id="my-posts" class="news-board-list">
+					<p style="text-align: center; padding: 20px; color: #666;">로그인 후 내 문의글을 확인할 수 있습니다</p>
+				</div>
+			</div>
+			
+			<ul class="pagination" id="board-pagination">
+				<a href="#" class="pagination-arrow arrow-left">
+				   <span class="ion-ios-arrow-back"></span>
+				</a>
+				<a class="pagin-number active">1</a>
+				<a href="#" class="pagin-number">2</a>
+				<a href="#" class="pagin-number">3</a>
+				<a href="#" class="pagin-number">4</a>
+				<a href="#" class="pagin-number">5</a>
+				<a href="#" class="pagination-arrow arrow-right">
+				   <span class="ion-ios-arrow-forward"></span>
+				</a>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- Footer (reusable) -->
+<script type="text/javascript" src="js/footer.js"></script>
+<script>renderFooter();</script>
+
+<script>
+// 게시판 UI로 교체 및 CRUD 연동 스크립트
+(function() {
+	function getCurrentUser() {
+		try { return JSON.parse(localStorage.getItem('currentUser')) || null; } catch(e) { return null; }
+	}
+	function escapeHtml(str){return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+	function nl2br(str){return (str||'').replace(/\n/g,'<br>');}
+
+	function buildBoardSkeleton(){
+		return (
+			'<div class="news-header">'+
+			'<div class="news-title">여행 Q&A 게시판</div>'+
+			'<div class="news-subtitle">여행에 대한 질문과 정보를 자유롭게 공유하세요.</div>'+
+			'<button id="openPostModal" class="btn btn-orange btn-round" style="display:none;">글쓰기</button>'+
+			'</div>'+
+			'<div id="board-list" class="news-board-list"><p style="text-align:center; padding:20px;">첫 글의 주인공이 되어보세요!</p></div>'+
+			'<ul class="news-pagination" id="board-pagination" style="display:none;"></ul>'
+		);
+	}
+
+	function injectModal(){
+		if (document.getElementById('boardPostModal')) return;
+		var modal = document.createElement('div');
+		modal.className = 'profile-modal';
+		modal.id = 'boardPostModal';
+		modal.style.display = 'none';
+		modal.innerHTML = ''+
+			'<div class="profile-modal-content">'+
+			'  <div class="profile-modal-header">'+
+			'    <h3 id="postModalTitle">새 글 작성</h3>'+
+			'    <span class="close" id="closeBoardPostModal">&times;</span>'+
+			'  </div>'+
+			'  <div class="profile-modal-body">'+
+			'    <form id="postForm">'+
+			'      <div class="form-input">'+
+			'        <label>제목</label>'+
+			'        <input type="text" id="postTitle" class="form-control" required>'+
+			'      </div>'+
+			'      <div class="form-input">'+
+			'        <label>내용</label>'+
+			'        <textarea id="postContent" class="form-control" rows="8" required></textarea>'+
+			'      </div>'+
+			'      <div class="form-actions">'+
+			'        <button type="submit" class="btn btn-orange">저장</button>'+
+			'        <button type="button" class="btn btn-secondary" id="cancelPost">취소</button>'+
+			'      </div>'+
+			'    </form>'+
+			'  </div>'+
+			'</div>';
+		document.body.appendChild(modal);
+	}
+
+	async function loadPosts(page = 1){
+		const container = document.querySelector('.news-content');
+		if (!container) return;
+		try {
+			if (window.showPageSkeleton) window.showPageSkeleton();
+			const res = await fetch(`/api/board?page=${page}&pageSize=10`);
+			const data = await res.json();
+			renderPosts(data.items || []);
+			renderBoardPagination(data.page, data.totalPages);
+		} catch (e){
+			const list = document.getElementById('board-list');
+			if (list) list.innerHTML = '<p style="text-align:center;color:#f25601;padding:20px;">게시글을 불러오는데 실패했습니다.</p>';
+		} finally { if (window.hidePageSkeleton) window.hidePageSkeleton(); }
+	}
+
+	function renderPosts(posts){
+		const list = document.getElementById('board-list');
+		const user = getCurrentUser();
+		if (!list) return;
+		list.innerHTML = '';
+		if (!posts || posts.length === 0){
+			list.innerHTML = '<p style="text-align:center; padding:20px;">첫 글의 주인공이 되어보세요!</p>';
+			return;
+		}
+		posts.forEach(p => {
+			const canEdit = user && (user.email === 'admin@trippage.com' || user.id === p.author_id);
+			const created = new Date(p.created_at);
+			const el = document.createElement('div');
+			el.className = 'post-item';
+			el.style.cssText = 'border: 1px solid #eee; padding: 20px; margin-bottom: 15px; border-radius: 8px; background: white;';
+			el.innerHTML = ''+
+				'<div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom: 15px;">'+
+				'  <h3 style="margin:0; color:#333;">'+escapeHtml(p.title)+'</h3>'+
+				'  <div class="board-actions" style="display:'+(canEdit?'block':'none')+'; white-space:nowrap;">'+
+				'    <button class="btn btn-sm btn-orange" data-action="edit" data-id="'+p.id+'">수정</button>'+
+				'    <button class="btn btn-sm btn-secondary" data-action="delete" data-id="'+p.id+'">삭제</button>'+
+				'  </div>'+
+				'</div>'+
+				'<div style="color:#666; font-size:14px; margin-bottom: 15px;">'+
+				'  <span><i class="ion-calendar"></i> '+created.toLocaleDateString('ko-KR')+'</span>'+
+				'  <span style="margin-left: 15px;"><i class="ion-person"></i> '+escapeHtml(p.author_name || '익명')+'</span>'+
+				'</div>'+
+				'<div style="color:#333; line-height:1.6;">'+nl2br(p.content)+'</div>';
+			list.appendChild(el);
+		});
+	}
+
+	async function deletePost(id){
+		try {
+			await fetch('/api/board/'+id, { method:'DELETE' });
+			return true;
+		} catch(e){ return false; }
+	}
+
+	function attachEvents(){
+		const container = document.querySelector('.news-content');
+		if (!container) return;
+		const writeBtn = document.getElementById('openPostModal');
+		function updateWriteBtn(){ const u=getCurrentUser(); writeBtn.style.display = u ? 'inline-block' : 'none'; }
+		updateWriteBtn();
+		window.addEventListener('storage', function(e){ if (e.key==='currentUser') updateWriteBtn(); });
+		// open create
+		writeBtn.addEventListener('click', function(){
+			const u = getCurrentUser(); if (!u) return showErrorToast('로그인이 필요합니다.');
+			document.getElementById('postModalTitle').textContent = '새 글 작성';
+			document.getElementById('postTitle').value='';
+			document.getElementById('postContent').value='';
+			writeBtn.dataset.editingId = '';
+			document.getElementById('boardPostModal').style.display='block';
+		});
+		// close/cancel
+		document.getElementById('closeBoardPostModal').addEventListener('click', ()=>{ document.getElementById('boardPostModal').style.display='none'; });
+		document.getElementById('cancelPost').addEventListener('click', ()=>{ document.getElementById('boardPostModal').style.display='none'; });
+		// list actions
+		container.addEventListener('click', async function(e){
+			const btn = e.target.closest('button[data-action]');
+			if (!btn) return;
+			const id = btn.getAttribute('data-id');
+			const action = btn.getAttribute('data-action');
+			if (action==='edit'){
+				const res = await fetch('/api/board/'+id);
+				const post = await res.json();
+				document.getElementById('postModalTitle').textContent = '글 수정';
+				document.getElementById('postTitle').value = post.title || '';
+				document.getElementById('postContent').value = post.content || '';
+				writeBtn.dataset.editingId = String(post.id);
+				document.getElementById('boardPostModal').style.display='block';
+			} else if (action==='delete'){
+				if (!confirm('정말 삭제하시겠습니까?')) return;
+				await deletePost(id); await loadPosts(1);
+			}
+		});
+		// save
+		document.getElementById('postForm').addEventListener('submit', async function(ev){
+			ev.preventDefault();
+			const u = getCurrentUser(); if (!u) return showErrorToast('로그인이 필요합니다.');
+			const payload = { title: document.getElementById('postTitle').value.trim(), content: document.getElementById('postContent').value.trim(), author: { id: u.id, name: u.name, email: u.email } };
+			if (!payload.title || !payload.content) return showErrorToast('제목과 내용을 입력해주세요.');
+			try {
+				const editingId = (document.getElementById('openPostModal').dataset.editingId)||'';
+				if (editingId){
+					await fetch('/api/board/'+editingId, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+				} else {
+					await fetch('/api/board', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+				}
+				document.getElementById('boardPostModal').style.display='none';
+				await loadPosts(1);
+			} catch(err){ showErrorToast('저장 중 오류가 발생했습니다.'); }
+		});
+	}
+
+	document.addEventListener('DOMContentLoaded', function(){
+		// 탭 기능 초기화
+		initTabs();
+		
+		var content = document.querySelector('.news-content');
+		if (!content) return;
+		
+		// 기존 게시판 목록 숨기고 게시판 UI 주입
+		loadPosts(1);
+		injectModal();
+		attachEvents();
+	});
+	
+	// 탭 기능 초기화
+	function initTabs() {
+		const tabButtons = document.querySelectorAll('.tab-button');
+		const tabContents = document.querySelectorAll('.tab-content');
+		
+		tabButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const targetTab = button.getAttribute('data-tab');
+				
+				// 모든 탭 버튼에서 active 클래스 제거
+				tabButtons.forEach(btn => btn.classList.remove('active'));
+				// 모든 탭 콘텐츠 숨기기
+				tabContents.forEach(content => content.classList.remove('active'));
+				
+				// 클릭된 탭 버튼에 active 클래스 추가
+				button.classList.add('active');
+				// 해당 탭 콘텐츠 보이기
+				document.getElementById(`tab-${targetTab}`).classList.add('active');
+				
+				// 탭별 콘텐츠 로드
+				loadTabContent(targetTab);
+			});
+		});
+	}
+	
+	// 탭별 콘텐츠 로드
+	function loadTabContent(tabName) {
+		switch(tabName) {
+			case 'all':
+				loadPosts(1);
+				break;
+			case 'faq':
+				// FAQ는 이미 HTML에 포함되어 있음
+				break;
+			case 'qna':
+				loadQnaPosts(1);
+				break;
+			case 'my':
+				loadMyPosts();
+				break;
+		}
+	}
+	
+	// Q&A 게시글 로드
+	async function loadQnaPosts(page = 1) {
+		const boardList = document.getElementById('board-list-qna');
+		if (!boardList) return;
+		
+		try {
+			if (window.showPageSkeleton) window.showPageSkeleton();
+			const res = await fetch(`/api/board?page=${page}&pageSize=10&type=qna`);
+			const data = await res.json();
+			renderQnaPosts(data.items || []);
+		} catch (e) {
+			boardList.innerHTML = '<p style="text-align:center;color:#f25601;padding:20px;">질문과 답변 게시글을 불러오는데 실패했습니다.</p>';
+		} finally { if (window.hidePageSkeleton) window.hidePageSkeleton(); }
+	}
+	
+	// 내 문의글 로드
+	async function loadMyPosts() {
+		const myPosts = document.getElementById('my-posts');
+		if (!myPosts) return;
+		
+		const user = getCurrentUser();
+		if (!user) {
+			myPosts.innerHTML = '<p style="text-align:center;color:#666;padding:20px;">로그인 후 내 문의글을 확인할 수 있습니다</p>';
+			return;
+		}
+		
+		try {
+			if (window.showPageSkeleton) window.showPageSkeleton();
+			const res = await fetch(`/api/board?author_id=${user.id}`);
+			const data = await res.json();
+			renderMyPosts(data.items || []);
+		} catch (e) {
+			myPosts.innerHTML = '<p style="text-align:center;color:#f25601;padding:20px;">내 문의글을 불러오는데 실패했습니다.</p>';
+		} finally { if (window.hidePageSkeleton) window.hidePageSkeleton(); }
+	}
+	
+	// Q&A 게시글 렌더링
+	function renderQnaPosts(posts) {
+		const list = document.getElementById('board-list-qna');
+		if (!list) return;
+		
+		list.innerHTML = '';
+		if (!posts || posts.length === 0) {
+			list.innerHTML = '<p style="text-align:center; padding:20px;">질문과 답변 게시글이 없습니다.</p>';
+			return;
+		}
+		
+		posts.forEach(p => {
+			const created = new Date(p.created_at);
+			const el = document.createElement('div');
+			el.className = 'post-item';
+			el.style.cssText = 'border: 1px solid #eee; padding: 20px; margin-bottom: 15px; border-radius: 8px; background: white;';
+			el.innerHTML = ''+
+				'<div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom: 15px;">'+
+				'  <h3 style="margin:0; color:#333;">'+escapeHtml(p.title)+'</h3>'+
+				'</div>'+
+				'<div style="color:#666; font-size:14px; margin-bottom: 15px;">'+
+				'  <span><i class="ion-calendar"></i> '+created.toLocaleDateString('ko-KR')+'</span>'+
+				'  <span style="margin-left: 15px;"><i class="ion-person"></i> '+escapeHtml(p.author_name || '익명')+'</span>'+
+				'</div>'+
+				'<div style="color:#333; line-height:1.6;">'+nl2br(p.content)+'</div>';
+			list.appendChild(el);
+		});
+	}
+	
+	// 내 문의글 렌더링
+	function renderMyPosts(posts) {
+		const list = document.getElementById('my-posts');
+		if (!list) return;
+		
+		list.innerHTML = '';
+		if (!posts || posts.length === 0) {
+			list.innerHTML = '<p style="text-align:center; padding:20px;">작성한 문의글이 없습니다.</p>';
+			return;
+		}
+		
+		posts.forEach(p => {
+			const created = new Date(p.created_at);
+			const el = document.createElement('div');
+			el.className = 'post-item';
+			el.style.cssText = 'border: 1px solid #eee; padding: 20px; margin-bottom: 15px; border-radius: 8px; background: white;';
+			el.innerHTML = ''+
+				'<div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom: 15px;">'+
+				'  <h3 style="margin:0; color:#333;">'+escapeHtml(p.title)+'</h3>'+
+				'  <div class="board-actions" style="white-space:nowrap;">'+
+				'    <button class="btn btn-sm btn-orange" data-action="edit" data-id="'+p.id+'">수정</button>'+
+				'    <button class="btn btn-sm btn-secondary" data-action="delete" data-id="'+p.id+'">삭제</button>'+
+				'  </div>'+
+				'</div>'+
+				'<div style="color:#666; font-size:14px; margin-bottom: 15px;">'+
+				'  <span><i class="ion-calendar"></i> '+created.toLocaleDateString('ko-KR')+'</span>'+
+				'</div>'+
+				'<div style="color:#333; line-height:1.6;">'+nl2br(p.content)+'</div>';
+			list.appendChild(el);
+		});
+	}
+
+	function renderBoardPagination(current, total) {
+		const pag = document.getElementById('board-pagination');
+		if (!pag) return;
+		pag.innerHTML = '';
+
+		function addPage(label, pageNum, disabled = false, active = false) {
+			const a = document.createElement('a');
+			a.href = '#';
+			a.className = active ? 'pagin-number active' : (label === 'prev' || label === 'next' ? 'pagination-arrow' : 'pagin-number');
+			if (label === 'prev') a.classList.add('arrow-left');
+			if (label === 'next') a.classList.add('arrow-right');
+			a.innerHTML = label === 'prev' ? '<span class="ion-ios-arrow-back"></span>' : (label === 'next' ? '<span class="ion-ios-arrow-forward"></span>' : String(pageNum));
+			if (disabled) a.style.pointerEvents = 'none';
+			a.addEventListener('click', function(e){ e.preventDefault(); if (!disabled) loadPosts(pageNum); });
+			pag.appendChild(a);
+		}
+
+		addPage('prev', Math.max(1, current - 1), current === 1);
+		const start = Math.max(1, current - 2);
+		const end = Math.min(total, start + 4);
+		for (let p = start; p <= end; p++) {
+			addPage(null, p, false, p === current);
+		}
+		addPage('next', Math.min(total, current + 1), current === total);
+	}
+})();
+</script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script>
+// 초기 페이지 로딩 스켈레톤
+if (window.showPageSkeleton) {
+  window.showPageSkeleton();
+  window.addEventListener('load', function(){ if (window.hidePageSkeleton) window.hidePageSkeleton(); });
+}
+</script>
+<script type="text/javascript" src="js/toss-auth.js"></script>
+<script type="text/javascript" src="js/swipe.js"></script>
+</body>
+</html>
