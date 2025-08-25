@@ -154,6 +154,13 @@
 	function getCurrentUser() {
 		try { return JSON.parse(localStorage.getItem('currentUser')) || null; } catch(e) { return null; }
 	}
+	
+	// 사용자 권한 확인 함수
+	function canUserEditPost(post, user) {
+		if (!user || !post) return false;
+		// 관리자는 모든 글 수정/삭제 가능, 일반 사용자는 자신의 글만 수정/삭제 가능
+		return user.email === 'admin@trippage.com' || user.id === post.author_id;
+	}
 	function escapeHtml(str){return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 	function nl2br(str){return (str||'').replace(/\n/g,'<br>');}
 
@@ -226,7 +233,8 @@
 			return;
 		}
 		posts.forEach(p => {
-			const canEdit = user && (user.email === 'admin@trippage.com' || user.id === p.author_id);
+			// 관리자이거나 글 작성자인 경우에만 수정/삭제 가능
+			const canEdit = canUserEditPost(p, user);
 			const created = new Date(p.created_at);
 			const el = document.createElement('div');
 			el.className = 'post-item';

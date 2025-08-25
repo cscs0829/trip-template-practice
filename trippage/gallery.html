@@ -97,28 +97,7 @@
 	</div>
 </div>
 
-<!-- 관리자 로그인 모달 -->
-<div class="admin-login-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
-	<div class="admin-login-content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; width: 400px; max-width: 90%;">
-		<div class="admin-login-header" style="text-align: center; margin-bottom: 20px;">
-			<h3>관리자 로그인</h3>
-			<span class="close-admin" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer;">&times;</span>
-		</div>
-		<div class="admin-login-form">
-			<div class="form-input">
-				<label>이메일</label><br>
-				<input type="email" id="adminEmail" class="form-control" placeholder="admin@trippage.com">
-			</div>
-			<div class="form-input">
-				<label>비밀번호</label><br>
-				<input type="password" id="adminPassword" class="form-control" placeholder="admin123">
-			</div>
-			<div class="form-input">
-				<button type="button" id="adminLoginBtn" class="btn btn-orange">로그인</button>
-			</div>
-		</div>
-	</div>
-</div>
+
 
 <!-- 이미지 추가 모달 -->
 <div class="image-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
@@ -178,7 +157,6 @@
 			</div>
 			<div class="col-form">
 				<button id="addImageBtn" class="btn btn-orange btn-round" style="display: none;">이미지 추가</button>
-				<button id="openAdminLogin" class="btn btn-secondary btn-round" style="margin-left:8px; display:none;">관리자 로그인</button>
 			</div>
 		</div>
 	</div>
@@ -211,8 +189,7 @@ if (window.showPageSkeleton) {
 </script>
 
 <script>
-// 관리자 기능 관련 변수
-let isAdminLoggedIn = false;
+
 
 // 여행지 목록 로드 (이미지 추가 시 여행지 선택용)
 async function loadDestinations() {
@@ -246,8 +223,9 @@ function isAdmin() {
 
 // 버튼 가시성 업데이트
 function updateAdminButtonsVisibility() {
-    const btn = document.getElementById('addImageBtn');
-    if (btn) btn.style.display = isAdmin() ? 'inline-block' : 'none';
+    const addBtn = document.getElementById('addImageBtn');
+    
+    if (addBtn) addBtn.style.display = isAdmin() ? 'inline-block' : 'none';
 }
 
 // 현재 갤러리 페이지 상태
@@ -364,50 +342,10 @@ async function deleteImage(imageId) {
     }
 }
 
-// 관리자 로그인 모달 열기
-const adminLoginBtnTrigger = document.getElementById('openAdminLogin');
-if (adminLoginBtnTrigger) {
-    adminLoginBtnTrigger.addEventListener('click', () => {
-        document.querySelector('.admin-login-modal').style.display = 'block';
-    });
-}
 
-// 관리자 로그인 처리
-const adminLoginActionBtn = document.getElementById('adminLoginBtn');
-if (adminLoginActionBtn) {
-    adminLoginActionBtn.addEventListener('click', async () => {
-        const email = document.getElementById('adminEmail').value;
-        const password = document.getElementById('adminPassword').value;
-        
-        try {
-            const response = await fetch('/api/admin/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
-            });
-            const result = await response.json();
-            if (result.success) {
-                isAdminLoggedIn = true;
-                updateAdminButtonsVisibility();
-                document.querySelector('.admin-login-modal').style.display = 'none';
-                showSuccessToast('관리자 로그인 성공!');
-                loadGalleryImages();
-            } else {
-                showErrorToast(result.message || '로그인 실패');
-            }
-        } catch (err) {
-            console.error('관리자 로그인 오류:', err);
-            showErrorToast('로그인 처리 중 오류가 발생했습니다.');
-        }
-    });
-}
 
 // 초기 버튼 가시성 및 첫 로드
 updateAdminButtonsVisibility();
-if (!isAdmin()) {
-    const adminLoginBtnEl = document.getElementById('openAdminLogin');
-    if (adminLoginBtnEl) adminLoginBtnEl.style.display = 'inline-block';
-}
 // 첫 페이지 로드
 loadGalleryImages(1, 16);
 
@@ -456,10 +394,17 @@ document.getElementById('imageForm').addEventListener('submit', async (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     // 여행지 목록 로드 (이미지 추가 시 사용)
     loadDestinations();
-    // 관리자면 생성 버튼 보이기
+    // 버튼 가시성 설정
     updateAdminButtonsVisibility();
     // 갤러리 이미지 로드
     loadGalleryImages();
+    
+    // navbar 로그인 상태 변화 감지
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'currentUser') {
+            updateAdminButtonsVisibility();
+        }
+    });
 });
 </script>
 </body>
