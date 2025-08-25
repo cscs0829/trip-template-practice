@@ -19,76 +19,61 @@
 
 	<!-- Import Style -->
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	    <link rel="stylesheet" type="text/css" href="css/swiper.css">
+	<link rel="stylesheet" type="text/css" href="css/swiper.css">
+	<link rel="stylesheet" type="text/css" href="css/single-destination.css">
     
+    <!-- Import Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/toss-auth.js"></script>
 
 	
 
 </head>
 <body style="background: #e6eaed;">
 
-<!-- Navbar -->
-<nav class="navbar single-destination-navbar">
-	<div class="container">
-		<div class="navbar-bars">
-			<a href="#" class="navbar-title sidebar-toggle" style="padding: 0;"><i class="ion-navicon-round"></i></a>
-        	<a href="index.html" class="navbar-title">트립페이지</a>
-		</div>
-		<div class="navbar-item">
-			<a href="index.html" class="navbar-title">트립페이지</a>
-			<ul>
-		        <li><a href="destination.html">여행지</a></li>
-			    <li><a href="gallery.html">갤러리</a></li>
-			    <li><a data-slide="slides" data-slide-target="#discover">상품소개</a></li>
-			    <li><a href="news.html">뉴스</a></li>
-				<li><button class="btn-login" id="openLogin">로그인</button></li>
-  		  	</ul>
-		</div>
-	</div>
-</nav>
+<!-- Reusable Navbar -->
+<script type="text/javascript" src="js/navbar.js"></script>
+<script>renderNavbar('single-destination');</script>
 
-<!-- Sidebar -->
-<div class="sidebar">
-<ul class="sidebar-list">
-	<li><a href="" class="close"><span class="ion-android-close"></span></a></li>
-	<li class="sidebar-list-hover"><a href="index.html">홈</a></li>
-    <li class="sidebar-list-hover"><a href="destination.html">여행지</a></li>
-    <li class="sidebar-list-hover"><a href="gallery.html">갤러리</a></li>
-    <li class="sidebar-list-hover"><a href="index.html#discover">상품소개</a></li>
-    <li class="sidebar-list-hover"><a href="news.html">뉴스</a></li>
-    <li><a class="btn btn-orange btn-round" href="login.html">로그인</a></li>
-</ul>                    
-</div>
+<!-- 로그인/회원가입/프로필은 toss-auth.js가 자동 주입합니다. -->
 
-<!-- Sidebar Overlay -->
-<section class="sidebar-overlay"></section>
-
-<!-- Login Form -->
-
-<div class="login-form">
-	<div class="login-top">
-		<span class="close">&times;</span>
-	</div>
-	<div class="login">
-		<h3 class="text-center">
-			트립페이지 로그인
-		</h3>
-		<div class="form-input">
-			<label>이메일</label> <br>
-			<input type="email" name="" class="form-control">
+<!-- 사용자 정보 수정 모달 -->
+<div class="profile-modal" id="profileModal">
+	<div class="profile-modal-content">
+		<div class="profile-modal-header">
+			<h3>내 정보 수정</h3>
+			<span class="close" id="closeProfileModal">&times;</span>
 		</div>
-		<div class="form-input">
-			<label>비밀번호</label> <br>
-			<input type="password" name="" class="form-control">
+		<div class="profile-modal-body">
+			<form id="profileForm">
+				<div class="form-input">
+					<label>이름</label>
+					<input type="text" id="profileName" class="form-control" required>
+				</div>
+				<div class="form-input">
+					<label>이메일</label>
+					<input type="email" id="profileEmail" class="form-control" required>
+				</div>
+				<div class="form-input">
+					<label>전화번호</label>
+					<input type="tel" id="profilePhone" class="form-control" required>
+				</div>
+				<div class="form-input">
+					<label>새 비밀번호 (변경하지 않으려면 비워두세요)</label>
+					<input type="password" id="profilePassword" class="form-control" minlength="6">
+				</div>
+				<div class="form-input">
+					<label>새 비밀번호 확인</label>
+					<input type="password" id="profilePasswordConfirm" class="form-control" minlength="6">
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-orange">수정하기</button>
+					<button type="button" class="btn btn-secondary" id="cancelProfileEdit">취소</button>
+				</div>
+			</form>
 		</div>
-		<div class="form-input">
-			<button type="submit" class="btn btn-login">로그인</button>
-		</div>
-		<a href="" class="text-center">계정이 없으신가요? 회원가입하기</a>
 	</div>
 </div>
-
-<div class="login-overlay"></div>
 
 <!-- Section -->
 
@@ -186,52 +171,19 @@
 	</div>
 </section>
 
-<section class="section-footer">
-	<div class="row">
-		<div class="col-left">
-			<p>Copyright &copy; 2025</p>
-			<p>서울특별시 강남구 테헤란로 123 <br>
-			전화 : 02-1234-5678 <br>
-			이메일 : contact@trippage.co.kr </p>
-			<a href="https://www.facebook.com/trippage" target="_blank"><span class="ion-social-facebook icon-social"></span></a>
-			<a href="https://www.instagram.com/trippage" target="_blank"><span class="ion-social-instagram icon-social"></span></a>
-			<a href="https://twitter.com/trippage" target="_blank"><span class="ion-social-twitter icon-social"></span></a>
-		</div>
-		<div class="col-right">
-			<b>여행 경험</b>
-			<ul>
-				<li><a href="#">자연</a></li>
-				<li><a href="#">문화</a></li>
-				<li><a href="#">종교</a></li>
-				<li><a href="#">요리</a></li>
-				<li><a href="#">모험</a></li>
-			</ul>
-		</div>
-		<div class="col-right">
-			<b>여행 가이드</b>
-			<ul>
-				<li><a href="#">관광 가이드</a></li>
-				<li><a href="#">여행사</a></li>
-				<li><a href="#">숙박시설</a></li>
-				<li><a href="#">저예산 여행</a></li>
-			</ul>
-		</div>
-		<div class="col-right">
-			<b>소식</b>
-			<ul>
-				<li><a href="#">뉴스</a></li>
-				<li><a href="#">이벤트</a></li>
-				<li><a href="#">팁 & 정보</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="footer-bottom">
-		<p><a href="https://github.com/cscs0829/trippage-page" rel="noreferer" target="_blank">트립페이지</a> - <span class="ion-heart red"></span>으로 만든 사랑스러운 웹사이트</p>
-		</div>
-</section>
+<!-- Footer (reusable) -->
+<script type="text/javascript" src="js/footer.js"></script>
+<script>renderFooter();</script>
 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script>
+    // 초기 페이지 로딩 스켈레톤
+    if (window.showPageSkeleton) {
+      window.showPageSkeleton();
+      window.addEventListener('load', function(){ if (window.hidePageSkeleton) window.hidePageSkeleton(); });
+    }
+    </script>
     <script type="text/javascript" src="js/jquery.swipebox.min.js"></script>
     
     <script>
@@ -240,6 +192,12 @@
 
         // URL에서 slug 추출
         function getSlugFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+            if (slug) {
+                return slug;
+            }
+            // URL 파라미터가 없으면 기존 방식으로 path에서 추출
             const pathParts = window.location.pathname.split('/');
             return pathParts[pathParts.length - 1];
         }
@@ -351,12 +309,12 @@
             
             // 필수 정보 검증
             if (!travelDate) {
-                alert('여행 날짜를 선택해주세요.');
+                showErrorToast('여행 날짜를 선택해주세요.');
                 return;
             }
             
             if (!paxCount) {
-                alert('인원 수를 선택해주세요.');
+                showErrorToast('인원 수를 선택해주세요.');
                 return;
             }
             
@@ -438,6 +396,296 @@
                 console.error('jQuery가 로드되지 않았습니다');
             }
         });
+
+        // 프로필 모달 관련 이벤트 리스너
+        document.addEventListener('DOMContentLoaded', function() {
+            // 프로필 모달 열기
+            const openProfileModal = document.getElementById('openProfileModal');
+            const profileModal = document.getElementById('profileModal');
+            
+            if (openProfileModal && profileModal) {
+                openProfileModal.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    profileModal.style.display = 'block';
+                    
+                    // 현재 사용자 정보로 폼 채우기
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+                    if (currentUser.name) {
+                        document.getElementById('profileName').value = currentUser.name;
+                    }
+                    if (currentUser.email) {
+                        document.getElementById('profileEmail').value = currentUser.email;
+                    }
+                    if (currentUser.phone) {
+                        document.getElementById('profilePhone').value = currentUser.phone;
+                    }
+                    
+                    // 실시간 중복 검증 설정
+                    setupProfileValidation(currentUser.id);
+                });
+            }
+            
+            // 프로필 모달 닫기
+            const closeProfileModal = document.getElementById('closeProfileModal');
+            const cancelProfileEdit = document.getElementById('cancelProfileEdit');
+            
+            if (closeProfileModal && profileModal) {
+                closeProfileModal.addEventListener('click', function() {
+                    profileModal.style.display = 'none';
+                });
+            }
+            
+            if (cancelProfileEdit && profileModal) {
+                cancelProfileEdit.addEventListener('click', function() {
+                    profileModal.style.display = 'none';
+                });
+            }
+            
+            // 모달 외부 클릭 시 닫기
+            if (profileModal) {
+                profileModal.addEventListener('click', function(e) {
+                    if (e.target === profileModal) {
+                        profileModal.style.display = 'none';
+                    }
+                });
+            }
+            
+            // 프로필 폼 제출 처리
+            const profileForm = document.getElementById('profileForm');
+            if (profileForm) {
+                profileForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('profileName').value;
+                    const email = document.getElementById('profileEmail').value;
+                    const phone = document.getElementById('profilePhone').value;
+                    const password = document.getElementById('profilePassword').value;
+                    const passwordConfirm = document.getElementById('profilePasswordConfirm').value;
+                    
+                    // 비밀번호 확인
+                    if (password && password !== passwordConfirm) {
+                        showProfileError('새 비밀번호 확인', '비밀번호가 일치하지 않습니다.');
+                        return;
+                    }
+                    
+                    // 중복 검증
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+                    const emailValidation = validateEmailUniqueness(email, currentUser.id);
+                    const phoneValidation = validatePhoneUniqueness(phone, currentUser.id);
+                    
+                    if (!emailValidation.isValid) {
+                        showProfileError('이메일', emailValidation.message);
+                        return;
+                    }
+                    
+                    if (!phoneValidation.isValid) {
+                        showProfileError('전화번호', phoneValidation.message);
+                        return;
+                    }
+                    
+                    // 사용자 정보 업데이트
+                    const updatedUser = {
+                        ...currentUser,
+                        name: name,
+                        email: email,
+                        phone: phone
+                    };
+                    
+                    if (password) {
+                        updatedUser.password = password;
+                    }
+                    
+                    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+                    
+                    // 성공 메시지
+                    showProfileSuccess('프로필이 성공적으로 업데이트되었습니다.');
+                    setTimeout(() => {
+                        profileModal.style.display = 'none';
+                    }, 1500);
+                    
+                    // 폼 초기화
+                    profileForm.reset();
+                });
+            }
+        });
+
+        // 프로필 검증 설정
+        function setupProfileValidation(currentUserId) {
+            const emailInput = document.getElementById('profileEmail');
+            const phoneInput = document.getElementById('profilePhone');
+            
+            // 이메일 실시간 검증
+            if (emailInput) {
+                let emailTimeout;
+                emailInput.addEventListener('input', function() {
+                    clearTimeout(emailTimeout);
+                    const email = this.value.trim();
+                    
+                    if (email === '') {
+                        hideProfileError('이메일');
+                        return;
+                    }
+                    
+                    if (!isValidEmail(email)) {
+                        showProfileError('이메일', '올바른 이메일 형식을 입력해주세요');
+                        return;
+                    }
+                    
+                    emailTimeout = setTimeout(() => {
+                        const validation = validateEmailUniqueness(email, currentUserId);
+                        if (!validation.isValid) {
+                            showProfileError('이메일', validation.message);
+                        } else {
+                            hideProfileError('이메일');
+                        }
+                    }, 500);
+                });
+            }
+            
+            // 전화번호 실시간 검증
+            if (phoneInput) {
+                let phoneTimeout;
+                phoneInput.addEventListener('input', function() {
+                    clearTimeout(phoneTimeout);
+                    const phone = this.value.trim();
+                    
+                    if (phone === '') {
+                        hideProfileError('전화번호');
+                        return;
+                    }
+                    
+                    if (!isValidPhone(phone)) {
+                        showProfileError('전화번호', '올바른 전화번호 형식을 입력해주세요');
+                        return;
+                    }
+                    
+                    phoneTimeout = setTimeout(() => {
+                        const validation = validatePhoneUniqueness(phone, currentUserId);
+                        if (!validation.isValid) {
+                            showProfileError('전화번호', validation.message);
+                        } else {
+                            hideProfileError('전화번호');
+                        }
+                    }, 500);
+                });
+            }
+        }
+
+        // 프로필 에러 표시
+        function showProfileError(fieldName, message) {
+            const labels = document.querySelectorAll('label');
+            let targetField = null;
+            
+            for (let label of labels) {
+                if (label.textContent.includes(fieldName)) {
+                    targetField = label.closest('.form-input');
+                    break;
+                }
+            }
+            
+            if (!targetField) return;
+            
+            let errorElement = targetField.querySelector('.profile-error');
+            
+            if (!errorElement) {
+                errorElement = document.createElement('div');
+                errorElement.className = 'profile-error';
+                errorElement.innerHTML = '<span style="color: #dc3545;">⚠</span>' + message;
+                targetField.appendChild(errorElement);
+            } else {
+                errorElement.innerHTML = '<span style="color: #dc3545;">⚠</span>' + message;
+                errorElement.style.display = 'block';
+            }
+            
+            // 에러 상태 클래스 추가
+            targetField.classList.add('error');
+        }
+
+        // 프로필 에러 숨기기
+        function hideProfileError(fieldName) {
+            const labels = document.querySelectorAll('label');
+            let targetField = null;
+            
+            for (let label of labels) {
+                if (label.textContent.includes(fieldName)) {
+                    targetField = label.closest('.form-input');
+                    break;
+                }
+            }
+            
+            if (!targetField) return;
+            
+            const errorElement = targetField.querySelector('.profile-error');
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
+            
+            // 에러 상태 클래스 제거
+            targetField.classList.remove('error');
+        }
+
+        // 프로필 성공 메시지
+        function showProfileSuccess(message) {
+            const successElement = document.createElement('div');
+            successElement.className = 'profile-success';
+            successElement.style.cssText = 'background: #d4edda; color: #155724; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-weight: 500;';
+            successElement.textContent = message;
+            
+            const form = document.getElementById('profileForm');
+            form.insertBefore(successElement, form.firstChild);
+            
+            setTimeout(() => {
+                successElement.remove();
+            }, 3000);
+        }
+
+        // 이메일 형식 검증
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // 전화번호 형식 검증
+        function isValidPhone(phone) {
+            const phoneRegex = /^01[0-9]-?[0-9]{3,4}-?[0-9]{4}$/;
+            return phoneRegex.test(phone);
+        }
+
+        // 이메일 중복 검증
+        function validateEmailUniqueness(email, currentUserId = null) {
+            const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+            const duplicateUser = existingUsers.find(user => 
+                user.email === email && user.id !== currentUserId
+            );
+            
+            if (duplicateUser) {
+                return {
+                    isValid: false,
+                    message: '이미 사용 중인 이메일입니다'
+                };
+            }
+            
+            return { isValid: true };
+        }
+
+        // 전화번호 중복 검증
+        function validatePhoneUniqueness(phone, currentUserId = null) {
+            if (!phone) return { isValid: true };
+            
+            const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+            const duplicateUser = existingUsers.find(user => 
+                user.phone === phone && user.id !== currentUserId
+            );
+            
+            if (duplicateUser) {
+                return {
+                    isValid: false,
+                    message: '이미 사용 중인 전화번호입니다'
+                };
+            }
+            
+            return { isValid: true };
+        }
     </script>
 
 </body>

@@ -22,30 +22,15 @@
     <link rel="stylesheet" type="text/css" href="css/swiper.css">
     <link rel="stylesheet" type="text/css" href="css/checkout.css">
     <link rel="stylesheet" type="text/css" href="css/reservation.css">
+    <link rel="stylesheet" type="text/css" href="css/my-reservation.css">
     
 
 </head>
 <body style="background: #e6eaed;">
 
-<!-- Navbar -->
-<nav class="navbar">
-	<div class="container">
-		<div class="navbar-bars">
-			<a href="#" class="navbar-title sidebar-toggle" style="padding: 0;"><i class="ion-navicon-round"></i></a>
-        	<a href="index.html" class="navbar-title">트립페이지</a>
-		</div>
-		<div class="navbar-item">
-			<a href="index.html" class="navbar-title">트립페이지</a>
-			<ul>
-		        <li><a href="destination.html">여행지</a></li>
-			    <li><a href="gallery.html">갤러리</a></li>
-			    <li><a data-slide="slides" data-slide-target="#discover">상품소개</a></li>
-			    <li><a href="news.html">뉴스</a></li>
-				<li><button class="btn-login" id="openLogin">로그인</button></li>
-  		  	</ul>
-		</div>
-	</div>
-</nav>
+<!-- Reusable Navbar -->
+<script type="text/javascript" src="js/navbar.js"></script>
+<script>renderNavbar('my-reservation');</script>
 
 <!-- Sidebar -->
 <div class="sidebar">
@@ -55,7 +40,7 @@
     <li class="sidebar-list-hover"><a href="destination.html">여행지</a></li>
     <li class="sidebar-list-hover"><a href="gallery.html">갤러리</a></li>
     <li class="sidebar-list-hover"><a href="index.html#discover">상품소개</a></li>
-    <li class="sidebar-list-hover"><a href="news.html">뉴스</a></li>
+    <li class="sidebar-list-hover"><a href="board.html">게시판</a></li>
     <li><a class="btn btn-orange btn-round" href="login.html">로그인</a></li>
 </ul>                    
 </div>
@@ -202,49 +187,9 @@
     </div>
 </section>
 
-<section class="section-footer">
-	<div class="row">
-		<div class="col-left">
-			<p>Copyright &copy; 2025</p>
-			<p>서울특별시 강남구 테헤란로 123 <br>
-			전화 : 02-1234-5678 <br>
-			이메일 : contact@trippage.co.kr </p>
-			<a href="https://www.facebook.com/trippage" target="_blank"><span class="ion-social-facebook icon-social"></span></a>
-			<a href="https://www.instagram.com/trippage" target="_blank"><span class="ion-social-instagram icon-social"></span></a>
-			<a href="https://twitter.com/trippage" target="_blank"><span class="ion-social-twitter icon-social"></span></a>
-		</div>
-		<div class="col-right">
-			<b>여행 경험</b>
-			<ul>
-				<li><a href="#">자연</a></li>
-				<li><a href="#">문화</a></li>
-				<li><a href="#">종교</a></li>
-				<li><a href="#">요리</a></li>
-				<li><a href="#">모험</a></li>
-			</ul>
-		</div>
-		<div class="col-right">
-			<b>여행 가이드</b>
-			<ul>
-				<li><a href="#">관광 가이드</a></li>
-				<li><a href="#">여행사</a></li>
-				<li><a href="#">숙박시설</a></li>
-				<li><a href="#">저예산 여행</a></li>
-			</ul>
-		</div>
-		<div class="col-right">
-			<b>소식</b>
-			<ul>
-				<li><a href="#">뉴스</a></li>
-				<li><a href="#">이벤트</a></li>
-				<li><a href="#">팁 & 정보</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="footer-bottom">
-		<p><a href="https://github.com/cscs0829/trippage-page" rel="noreferer" target="_blank">트립페이지</a> - <span class="ion-heart red"></span>으로 만든 사랑스러운 웹사이트</p>
-		</div>
-</section>
+<!-- Footer (reusable) -->
+<script type="text/javascript" src="js/footer.js"></script>
+<script>renderFooter();</script>
 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
@@ -293,23 +238,23 @@
         
         // 티켓 다운로드 함수
         function downloadTicket() {
-            alert('티켓 다운로드 기능은 준비 중입니다.');
+            showInfoToast('티켓 다운로드 기능은 준비 중입니다.');
         }
         
         // 예약 수정 함수
         function modifyReservation() {
-            alert('예약 수정 기능은 준비 중입니다.');
+            showInfoToast('예약 수정 기능은 준비 중입니다.');
         }
         
         // 문의하기 함수
         function contactSupport() {
-            alert('고객센터: 02-1234-5678\n이메일: contact@trippage.co.kr');
+            showInfoToast('고객센터: 02-1234-5678\n이메일: contact@trippage.co.kr');
         }
         
         // 예약 취소 함수
         function cancelReservation() {
             if (confirm('정말로 예약을 취소하시겠습니까?\n취소 시 환불 규정이 적용됩니다.')) {
-                alert('예약이 취소되었습니다. 환불은 3-5일 내에 처리됩니다.');
+                showSuccessToast('예약이 취소되었습니다. 환불은 3-5일 내에 처리됩니다.');
                 // 홈페이지로 이동
                 window.location.href = 'index.html';
             }

@@ -21,49 +21,20 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/swiper.css">
 	<link rel="stylesheet" type="text/css" href="css/swipebox.min.css">
+	<link rel="stylesheet" type="text/css" href="css/gallery.css">
 
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar gallery-navbar">
-	<div class="container">
-		<div class="navbar-bars">
-			<a href="#" class="navbar-title sidebar-toggle" style="padding: 0;"><i class="ion-navicon-round"></i></a>
-        	<a href="index.html" class="navbar-title">트립페이지</a>
-		</div>
-		<div class="navbar-item">
-			<a href="index.html" class="navbar-title">트립페이지</a>
-			<ul>
-		        <li><a href="destination.html">해외여행지</a></li>
-			    <li><a href="gallery.html">갤러리</a></li>
-			    <li><a href="index.html#discover">상품소개</a></li>
-			    <li><a href="news.html">뉴스</a></li>
-				<li><button class="btn-login" id="openLogin">로그인</button></li>
-  		  	</ul>
-		</div>
-	</div>
-</nav>
+<!-- Reusable Navbar -->
+<script type="text/javascript" src="js/navbar.js"></script>
+<script>renderNavbar('gallery');</script>
 
-<!-- Sidebar -->
-<div class="sidebar">
-<ul class="sidebar-list">
-	<li><a href="" class="close"><span class="ion-android-close"></span></a></li>
-	<li class="sidebar-list-hover"><a href="index.html">홈</a></li>
-    <li class="sidebar-list-hover"><a href="destination.html">해외여행지</a></li>
-    <li class="sidebar-list-hover"><a href="gallery.html">갤러리</a></li>
-    <li class="sidebar-list-hover"><a href="index.html#discover">상품소개</a></li>
-    <li class="sidebar-list-hover"><a href="news.html">뉴스</a></li>
-    <li><a class="btn btn-orange btn-round" href="login.html">로그인</a></li>
-</ul>                    
-</div>
+<!-- 공용 사이드바(navbar.js)로 대체됨 -->
 
-<!-- Sidebar Overlay -->
-<section class="sidebar-overlay"></section>
-
-<!-- Login Form -->
-
-<div class="login-form">
+<!-- Toss 인증 UI는 toss-auth.js에서 자동 주입됩니다 -->
+<!-- 기존 로그인 폼 제거: 자동 주입 사용 -->
+<div class="login-form" style="display:none;">
 	<div class="login-top">
 		<span class="close">&times;</span>
 	</div>
@@ -86,7 +57,97 @@
 	</div>
 </div>
 
-<div class="login-overlay"></div>
+<div class="login-overlay" style="display:none;"></div>
+
+<!-- 사용자 정보 수정 모달 -->
+<div class="profile-modal" id="profileModal">
+	<div class="profile-modal-content">
+		<div class="profile-modal-header">
+			<h3>내 정보 수정</h3>
+			<span class="close" id="closeProfileModal">&times;</span>
+		</div>
+		<div class="profile-modal-body">
+			<form id="profileForm">
+				<div class="form-input">
+					<label>이름</label>
+					<input type="text" id="profileName" class="form-control" required>
+				</div>
+				<div class="form-input">
+					<label>이메일</label>
+					<input type="email" id="profileEmail" class="form-control" required>
+				</div>
+				<div class="form-input">
+					<label>전화번호</label>
+					<input type="tel" id="profilePhone" class="form-control" required>
+				</div>
+				<div class="form-input">
+					<label>새 비밀번호 (변경하지 않으려면 비워두세요)</label>
+					<input type="password" id="profilePassword" class="form-control" minlength="6">
+				</div>
+				<div class="form-input">
+					<label>새 비밀번호 확인</label>
+					<input type="password" id="profilePasswordConfirm" class="form-control" minlength="6">
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-orange">수정하기</button>
+					<button type="button" class="btn btn-secondary" id="cancelProfileEdit">취소</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- 관리자 로그인 모달 -->
+<div class="admin-login-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+	<div class="admin-login-content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; width: 400px; max-width: 90%;">
+		<div class="admin-login-header" style="text-align: center; margin-bottom: 20px;">
+			<h3>관리자 로그인</h3>
+			<span class="close-admin" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer;">&times;</span>
+		</div>
+		<div class="admin-login-form">
+			<div class="form-input">
+				<label>이메일</label><br>
+				<input type="email" id="adminEmail" class="form-control" placeholder="admin@trippage.com">
+			</div>
+			<div class="form-input">
+				<label>비밀번호</label><br>
+				<input type="password" id="adminPassword" class="form-control" placeholder="admin123">
+			</div>
+			<div class="form-input">
+				<button type="button" id="adminLoginBtn" class="btn btn-orange">로그인</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 이미지 추가 모달 -->
+<div class="image-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+	<div class="image-modal-content" style="position: relative; background: white; margin: 50px auto; padding: 30px; border-radius: 8px; width: 90%; max-width: 600px;">
+		<div class="image-modal-header" style="text-align: center; margin-bottom: 30px;">
+			<h3>갤러리 이미지 추가</h3>
+			<span class="close-image" style="position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer;">&times;</span>
+		</div>
+		<form id="imageForm" enctype="multipart/form-data">
+			<div class="form-group" style="margin-bottom: 20px;">
+				<label>이미지 파일 *</label>
+				<input type="file" id="imageFile" name="image" class="form-control" accept="image/*" required>
+			</div>
+			<div class="form-group" style="margin-bottom: 20px;">
+				<label>이미지 설명</label>
+				<input type="text" id="imageAltText" name="alt_text" class="form-control" placeholder="이미지에 대한 설명을 입력하세요">
+			</div>
+			<div class="form-group" style="margin-bottom: 30px;">
+				<label>
+					<input type="checkbox" id="imageFeatured" name="is_featured"> 주요 이미지로 설정
+				</label>
+			</div>
+			<div class="form-actions" style="text-align: center;">
+				<button type="submit" class="btn btn-orange" style="margin-right: 10px;">이미지 추가</button>
+				<button type="button" class="btn btn-secondary close-image">취소</button>
+			</div>
+		</form>
+	</div>
+</div>
 
 <section class="section-header-single">
 	<img src="img/bg-gallery.jpg">
@@ -115,290 +176,291 @@
 				<h3>아름다운 여행 갤러리</h3>
 				<p>인스타그램에서 인기 있는 아름다운 여행의 순간들을 담은 갤러리입니다. 여행자들이 촬영한 생생한 사진들을 감상해보세요</p>
 			</div>
+			<div class="col-form">
+				<button id="addImageBtn" class="btn btn-orange btn-round" style="display: none;">이미지 추가</button>
+				<button id="openAdminLogin" class="btn btn-secondary btn-round" style="margin-left:8px; display:none;">관리자 로그인</button>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="column">
-			<a href="img/Gallery/22427484_369553130149066_8205756025140150272_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/22427484_369553130149066_8205756025140150272_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>	
-			<a href="img/Gallery/22709112_126847261368839_3816787601726111744_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/22709112_126847261368839_3816787601726111744_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/28430212_200924710667049_7004971581080338432_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/28430212_200924710667049_7004971581080338432_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/29087715_1693103334069013_7217753722737131520_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/29087715_1693103334069013_7217753722737131520_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="column">
-			<a href="img/Gallery/24175228_913344825485214_1747928750328119296_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/24175228_913344825485214_1747928750328119296_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/23823687_523669887982025_4768024408549752832_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/23823687_523669887982025_4768024408549752832_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/29415561_163922580940067_2417069708558729216_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/29415561_163922580940067_2417069708558729216_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/27573391_1831430933557419_8533318736831053824_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/27573391_1831430933557419_8533318736831053824_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/28434752_386907991781375_9167553190177013760_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/28434752_386907991781375_9167553190177013760_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="column">
-			<a href="img/Gallery/25015541_140076426774487_5369120968708980736_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/25015541_140076426774487_5369120968708980736_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/25037337_1825448214419842_48033548438863872_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/25037337_1825448214419842_48033548438863872_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/28753844_228354697736345_7723101941311471616_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/28753844_228354697736345_7723101941311471616_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/26870845_1740142096076715_486825953067008000_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/26870845_1740142096076715_486825953067008000_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="column">
-			<a href="img/Gallery/27880266_1798970387070331_5621832064107020288_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/27880266_1798970387070331_5621832064107020288_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/29089828_175705203229064_354079736697192448_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/29089828_175705203229064_354079736697192448_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/27573391_1831430933557419_8533318736831053824_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/27573391_1831430933557419_8533318736831053824_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-			<a href="img/Gallery/29415561_163922580940067_2417069708558729216_n.jpg" class="swipebox" title="Image by Instagram Explore Bali">
-				<div class="wrapper">
-					<div class="zoom-effect">
-						<div class="image">
-							<img src="img/Gallery/29415561_163922580940067_2417069708558729216_n.jpg">
-							<div class="overlay">
-								<span class="ion-search"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</a>
-		</div>
+	<div class="row" id="gallery-grid">
+		<!-- 갤러리 이미지가 동적으로 로드됩니다 -->
 	</div>
 </section>
 
-<ul class="pagination">
-	<a href="#" class="pagination-arrow arrow-left">
-	   <span class="ion-ios-arrow-back"></span>
-	</a>
-	<a class="pagin-number active">1</a>
-	<a href="#" class="pagin-number">2</a>
-	<a href="#" class="pagin-number">3</li>
-	<a href="#" class="pagin-number">4</a>
-	<a href="#" class="pagin-number">5</a>
-	<a href="#" class="pagin-arrow arrow-right">
-	   <span class="ion-ios-arrow-forward"></span>
-	</a>
-</ul>
+<ul class="pagination" id="gallery-pagination"></ul>
 
-<section class="section-footer">
-	<div class="texture-handler-top"></div>
-	<div class="row">
-		<div class="col-left">
-			<p>Copyright &copy; 2024 트립페이지</p>
-			<p>서울특별시 강남구 테헤란로 123<br>
-			전화 : 02-1234-5678<br>
-			이메일 : info@trippage.co.kr</p>
-			<a href="#" target="_blank"><span class="ion-social-facebook icon-social"></span></a>
-			<a href="#" target="_blank"><span class="ion-social-instagram icon-social"></span></a>
-			<a href="#" target="_blank"><span class="ion-social-twitter icon-social"></span></a>
-		</div>
-		<div class="col-right">
-			<b>여행 경험</b>
-			<ul>
-				<li><a href="#">자연여행</a></li>
-				<li><a href="#">문화체험</a></li>
-				<li><a href="#">종교여행</a></li>
-				<li><a href="#">맛집투어</a></li>
-				<li><a href="#">모험여행</a></li>
-			</ul>
-		</div>
-		<div class="col-right">
-			<b>여행 가이드</b>
-			<ul>
-				<li><a href="#">여행 가이드</a></li>
-				<li><a href="#">여행 상담</a></li>
-				<li><a href="#">숙박 예약</a></li>
-				<li><a href="#">경제 여행</a></li>
-			</ul>
-		</div>
-		<div class="col-right">
-			<b>최신 소식</b>
-			<ul>
-				<li><a href="#">뉴스</a></li>
-				<li><a href="#">이벤트</a></li>
-				<li><a href="#">여행 팁</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="footer-bottom">
-		<p><a href="#" rel="noreferer" target="_blank">트립페이지</a> - 고객의 꿈을 현실로 만드는 여행사</p>
-	</div>
-</section>
+<!-- Footer (reusable) -->
+<script type="text/javascript" src="js/footer.js"></script>
+<script>renderFooter();</script>
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script>
+// 초기 페이지 로딩 스켈레톤
+if (window.showPageSkeleton) {
+  window.showPageSkeleton();
+  window.addEventListener('load', function(){ if (window.hidePageSkeleton) window.hidePageSkeleton(); });
+}
+</script>
+<script type="text/javascript" src="js/toss-auth.js"></script>
 <script type="text/javascript" src="js/swipe.js"></script>
 <script type="text/javascript" src="js/ios-orientationchange-fix.js"></script>
 <script type="text/javascript" src="js/jquery.swipebox.min.js"></script>
 <script type="text/javascript">
 	$('.swipebox').swipebox();
+</script>
+
+<script>
+// 관리자 기능 관련 변수
+let isAdminLoggedIn = false;
+
+// 여행지 목록 로드 (이미지 추가 시 여행지 선택용)
+async function loadDestinations() {
+    try {
+        const response = await fetch('/api/destinations');
+        const destinations = await response.json();
+        
+        const select = document.getElementById('imageDestination');
+        select.innerHTML = '<option value="">여행지 선택 안함</option>';
+        
+        destinations.forEach(destination => {
+            const option = document.createElement('option');
+            option.value = destination.id;
+            option.textContent = destination.name;
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error('여행지 목록 로드 실패:', error);
+    }
+}
+
+// 관리자 여부 확인
+function isAdmin() {
+    try {
+        const u = JSON.parse(localStorage.getItem('currentUser'));
+        return !!(u && u.email === 'admin@trippage.com');
+    } catch (e) {
+        return false;
+    }
+}
+
+// 버튼 가시성 업데이트
+function updateAdminButtonsVisibility() {
+    const btn = document.getElementById('addImageBtn');
+    if (btn) btn.style.display = isAdmin() ? 'inline-block' : 'none';
+}
+
+// 현재 갤러리 페이지 상태
+let currentGalleryPage = 1;
+
+// 갤러리 이미지 로드 및 표시 (4x4 = 16개/페이지)
+async function loadGalleryImages(page = 1, pageSize = 16) {
+    try {
+        const response = await fetch(`/api/gallery?page=${page}&pageSize=${pageSize}`);
+        const data = await response.json();
+        const images = Array.isArray(data) ? data : (data.items || []);
+        const totalPages = (data && data.totalPages) ? data.totalPages : 1;
+        currentGalleryPage = (data && data.page) ? data.page : page;
+        
+        const galleryGrid = document.getElementById('gallery-grid');
+        galleryGrid.innerHTML = '';
+        const admin = isAdmin();
+        
+        // 4열 x 4행 렌더링
+        for (let i = 0; i < images.length; i += 4) {
+            const row = document.createElement('div');
+            row.className = 'row';
+
+            for (let j = 0; j < 4; j++) {
+                const image = images[i + j];
+                const col = document.createElement('div');
+                col.className = 'column';
+                if (image) {
+                    const href = image.image_url.startsWith('/') ? image.image_url : ('/' + image.image_url.replace(/^\\+/, ''));
+                    const src = href;
+                    const wrapper = document.createElement('a');
+                    wrapper.href = href;
+                    wrapper.className = 'swipebox';
+                    wrapper.title = image.alt_text || 'Gallery Image';
+                    wrapper.innerHTML = `
+                        <div class=\"wrapper\">
+                            <div class=\"zoom-effect\">
+                                <div class=\"image\" style=\"position: relative;\">
+                                    <img src=\"${src}\">
+                                    <div class=\"overlay\"><span class=\"ion-search\"></span></div>
+                                    ${admin ? `<button class=\"gallery-delete-btn\" type=\"button\" onclick=\"event.preventDefault(); event.stopPropagation(); deleteImage(${image.id})\">삭제</button>` : ''}
+                                </div>
+                            </div>
+                        </div>`;
+                    col.appendChild(wrapper);
+                }
+                row.appendChild(col);
+            }
+            galleryGrid.appendChild(row);
+        }
+        
+        if (!images.length) {
+            galleryGrid.innerHTML = '<p>표시할 갤러리 이미지가 없습니다.</p>';
+        }
+        
+        // 페이지네이션 렌더링
+        renderGalleryPagination(currentGalleryPage, totalPages);
+        
+        // Swipebox 초기화
+        if (typeof $.fn.swipebox !== 'undefined') {
+            $('.swipebox').swipebox();
+        }
+    } catch (error) {
+        console.error('갤러리 이미지 로드 실패:', error);
+        document.getElementById('gallery-grid').innerHTML = '<p>갤러리 이미지를 불러오는데 실패했습니다.</p>';
+    }
+}
+
+function renderGalleryPagination(current, total) {
+    const pag = document.getElementById('gallery-pagination');
+    if (!pag) return;
+    pag.innerHTML = '';
+
+    function addPage(label, pageNum, disabled = false, active = false) {
+        const a = document.createElement('a');
+        a.href = '#';
+        a.className = active ? 'pagin-number active' : (label === 'prev' || label === 'next' ? 'pagin-arrow' : 'pagin-number');
+        if (label === 'prev') a.classList.add('arrow-left');
+        if (label === 'next') a.classList.add('arrow-right');
+        a.innerHTML = label === 'prev' ? '<span class="ion-ios-arrow-back"></span>' : (label === 'next' ? '<span class="ion-ios-arrow-forward"></span>' : String(pageNum));
+        if (disabled) a.style.pointerEvents = 'none';
+        a.addEventListener('click', function(e){ e.preventDefault(); if (!disabled) loadGalleryImages(pageNum, 16); });
+        pag.appendChild(a);
+    }
+
+    addPage('prev', Math.max(1, current - 1), current === 1);
+    const start = Math.max(1, current - 2);
+    const end = Math.min(total, start + 4);
+    for (let p = start; p <= end; p++) {
+        addPage(null, p, false, p === current);
+    }
+    addPage('next', Math.min(total, current + 1), current === total);
+}
+
+// 이미지 삭제 함수
+async function deleteImage(imageId) {
+    if (!confirm('정말로 이 이미지를 삭제하시겠습니까?')) return;
+    try {
+        const response = await fetch(`/api/admin/gallery/${imageId}`, { method: 'DELETE' });
+        const result = await response.json().catch(()=>({}));
+        if (!response.ok || !result.success) {
+            const msg = (result && (result.error || result.message)) || `HTTP ${response.status}`;
+            throw new Error(msg);
+        }
+        await loadGalleryImages(currentGalleryPage, 16);
+        const grid = document.getElementById('gallery-grid');
+        if (grid && !grid.querySelector('img')) {
+            const prev = Math.max(1, currentGalleryPage - 1);
+            if (prev !== currentGalleryPage) await loadGalleryImages(prev, 16);
+        }
+    } catch (error) {
+        console.error('이미지 삭제 오류:', error);
+        showErrorToast('이미지 삭제 중 오류가 발생했습니다.\n' + (error && error.message ? error.message : '')); 
+    }
+}
+
+// 관리자 로그인 모달 열기
+const adminLoginBtnTrigger = document.getElementById('openAdminLogin');
+if (adminLoginBtnTrigger) {
+    adminLoginBtnTrigger.addEventListener('click', () => {
+        document.querySelector('.admin-login-modal').style.display = 'block';
+    });
+}
+
+// 관리자 로그인 처리
+const adminLoginActionBtn = document.getElementById('adminLoginBtn');
+if (adminLoginActionBtn) {
+    adminLoginActionBtn.addEventListener('click', async () => {
+        const email = document.getElementById('adminEmail').value;
+        const password = document.getElementById('adminPassword').value;
+        
+        try {
+            const response = await fetch('/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const result = await response.json();
+            if (result.success) {
+                isAdminLoggedIn = true;
+                updateAdminButtonsVisibility();
+                document.querySelector('.admin-login-modal').style.display = 'none';
+                showSuccessToast('관리자 로그인 성공!');
+                loadGalleryImages();
+            } else {
+                showErrorToast(result.message || '로그인 실패');
+            }
+        } catch (err) {
+            console.error('관리자 로그인 오류:', err);
+            showErrorToast('로그인 처리 중 오류가 발생했습니다.');
+        }
+    });
+}
+
+// 초기 버튼 가시성 및 첫 로드
+updateAdminButtonsVisibility();
+if (!isAdmin()) {
+    const adminLoginBtnEl = document.getElementById('openAdminLogin');
+    if (adminLoginBtnEl) adminLoginBtnEl.style.display = 'inline-block';
+}
+// 첫 페이지 로드
+loadGalleryImages(1, 16);
+
+// 이미지 추가 버튼 클릭
+document.getElementById('addImageBtn').addEventListener('click', () => {
+    document.querySelector('.image-modal').style.display = 'block';
+});
+
+// 이미지 추가 모달 닫기
+document.querySelectorAll('.close-image').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelector('.image-modal').style.display = 'none';
+    });
+});
+
+// 이미지 추가 폼 제출
+document.getElementById('imageForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formEl = document.getElementById('imageForm');
+    const fd = new FormData(formEl);
+
+    try {
+        const response = await fetch('/api/admin/gallery', {
+            method: 'POST',
+            body: fd
+        });
+        const result = await response.json();
+        
+        if (result.success) {
+            showSuccessToast('갤러리 이미지가 성공적으로 추가되었습니다!');
+            document.querySelector('.image-modal').style.display = 'none';
+            formEl.reset();
+            document.getElementById('imageFeatured').checked = false;
+            loadGalleryImages(currentGalleryPage, 16);
+        } else {
+            showErrorToast('이미지 추가에 실패했습니다: ' + (result.error || 'Unknown'));
+        }
+    } catch (error) {
+        console.error('이미지 추가 오류:', error);
+        showErrorToast('이미지 추가 중 오류가 발생했습니다.');
+    }
+});
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', () => {
+    // 여행지 목록 로드 (이미지 추가 시 사용)
+    loadDestinations();
+    // 관리자면 생성 버튼 보이기
+    updateAdminButtonsVisibility();
+    // 갤러리 이미지 로드
+    loadGalleryImages();
+});
 </script>
 </body>
 </html>

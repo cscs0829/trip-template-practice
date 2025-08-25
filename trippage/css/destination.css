@@ -1,0 +1,54 @@
+/* Destination page specific styles */
+
+/* Section Single (header area for destination) */
+.section-single { padding: 40px 0 !important; background: #f8f9fa !important; }
+.single-head { display: flex !important; align-items: center !important; justify-content: space-between !important; margin-bottom: 30px !important; padding: 30px !important; background: #fff !important; border-radius: 12px !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; }
+.single-head .col { flex: 1 !important; }
+.single-head .col img { width: 60px !important; height: 60px !important; margin-bottom: 20px !important; }
+.single-head .col h3 { margin: 0 0 15px 0 !important; font-size: 24px !important; font-weight: 600 !important; color: #333 !important; }
+.single-head .col p { margin: 0 !important; font-size: 16px !important; line-height: 1.6 !important; color: #666 !important; }
+.single-head .col-form { margin-left: 30px !important; }
+.single-head .btn { padding: 12px 30px !important; font-size: 16px !important; font-weight: 500 !important; }
+
+/* Destination cards grid */
+.single-body { margin: 20px auto; display: flex; justify-content: center; flex-wrap: wrap; }
+.single-body .col { width: calc(94% / 3); border-radius: 5px; box-shadow: 0 6px 15px rgba(36,37,38,0.2); transition: .4s ease-in-out; }
+.single-body .col:hover { box-shadow: 5px 2px 10px rgba(36,37,38,0.5); }
+.single-body .col img { display: block; width: 100%; object-fit: cover; object-position: center; border-radius: 8px; height: 300px; }
+.single-body .col .overlay { position: absolute; width: 100%; height: 100%; bottom: 0; left: 0; right: 0; overflow: hidden; background: rgba(0,0,0,0.3); border-radius: 5px; }
+.single-body .col .overlay .caption { color: white; position: absolute; width: 100%; bottom: 40%; top: 50%; }
+.single-body .col .overlay .caption .caption-text { padding: 0 20px; }
+.single-body .col .overlay .caption p { font-size: 20px; text-transform: uppercase; font-weight: bold; font-family: "Montserrat-Medium"; margin-bottom: 0; }
+.single-body .col .overlay .caption .btn { padding: 12px 36px !important; font-size: 14px; line-height: 1; margin-top: 10px; }
+
+/* Pagination */
+ul.pagination { list-style: none; padding: 18px; text-align: center; }
+ul.pagination a, ul.pagination li { border-radius: 50%; color: #212121; display: inline-block; margin: 0; transition: .5s ease-in; cursor: pointer; text-decoration: none; }
+ul.pagination a:hover { background: rgba(63, 81, 181, 0.12); }
+ul.pagination .pagin-number { font-size: 20px; text-align: center; line-height: 24px; width: 37px; padding: 7px 0; margin: 0 4px; }
+ul.pagination .pagin-number.active { background: var(--primary-color); color: #fff; }
+ul.pagination .pagin-arrow i { font-size: 24px; padding: 4px; }
+
+/* Admin modals (destination, admin login) */
+.admin-login-modal, .destination-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none; }
+.admin-login-content, .destination-modal-content { position: relative; background: white; margin: 50px auto; padding: 30px; border-radius: 8px; width: 90%; max-width: 800px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.admin-login-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; max-width: 90%; margin: 0; }
+.close-admin, .close-destination { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #666; transition: color 0.3s ease; }
+.close-admin:hover, .close-destination:hover { color: #f25601; }
+.destination-modal-header, .admin-login-header { text-align: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0; }
+.form-row { display: flex; gap: 20px; margin-bottom: 20px; }
+.form-group { flex: 1; margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 14px; transition: border-color 0.3s ease; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: #f25601; box-shadow: 0 0 0 3px rgba(242, 86, 1, 0.1); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-actions { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #f0f0f0; }
+
+/* Admin buttons (reuse Toss style) */
+#addDestinationBtn { border: none !important; border-radius: 12px !important; padding: 10px 16px !important; font-weight: 600 !important; font-size: 14px !important; letter-spacing: -0.2px !important; box-shadow: 0 8px 16px rgba(0,0,0,0.08) !important; transition: transform .06s ease, box-shadow .2s ease, background-color .2s ease !important; background: var(--primary-color) !important; color: #fff !important; }
+#addDestinationBtn:hover { transform: translateY(-1px) !important; box-shadow: 0 10px 20px rgba(0,0,0,0.12) !important; background: #e9330c !important; }
+
+/* Responsive tweaks */
+@media (max-width: 1024px) { .single-body .col { width: calc(95% / 2); } }
+@media (max-width: 430px) { .single-body .col { width: 95%; } }
+@media (max-width: 768px) { .form-row { flex-direction: column; gap: 0; } .destination-modal-content, .admin-login-content { width: 95%; margin: 20px auto; padding: 20px; } .admin-login-content { position: relative; top: auto; left: auto; transform: none; margin: 20px auto; } }
