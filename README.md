@@ -299,13 +299,24 @@ services:
 
 ⭐ **이 프로젝트가 도움이 되었다면 Star를 눌러주세요!**
 
-## 📸 **스크린샷**
+## 📸 **실화면 캡처**
 
-### 🎨 **토스 스타일 프로필 모달**
-![프로필 모달](https://via.placeholder.com/800x600/f25601/ffffff?text=토스+스타일+프로필+모달)
+자동 캡처 스크립트로 생성된 실제 화면입니다. 캡처 스크립트: `scripts/capture-screenshots.js` (로컬 서버 필요)
 
-### 📱 **반응형 디자인**
-![반응형 디자인](https://via.placeholder.com/800x600/667eea/ffffff?text=반응형+디자인)
+### 🖥️ 데스크톱
 
-### 🔒 **중복 검증 시스템**
-![중복 검증](https://via.placeholder.com/800x600/28a745/ffffff?text=실시간+중복+검증)
+![홈(데스크톱)](docs/screenshots/home-desktop.png)
+
+![여행지 목록(데스크톱)](docs/screenshots/destinations-desktop.png)
+
+![갤러리(데스크톱)](docs/screenshots/gallery-desktop.png)
+
+### 📱 모바일
+
+![홈(모바일)](docs/screenshots/home-mobile.png)
+
+![여행지 목록(모바일)](docs/screenshots/destinations-mobile.png)
+
+![갤러리(모바일)](docs/screenshots/gallery-mobile.png)
+
+> 캡처 재생성: 로컬 서버 실행 후 `npm run playwright:install && node scripts/capture-screenshots.js`
