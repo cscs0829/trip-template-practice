@@ -1,4 +1,4 @@
-﻿/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+﻿﻿/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* CSS Variables for Common Colors */
 :root {
@@ -2808,6 +2808,7 @@ ul.breadcrumb li a:hover {
 
 /* 모달 스타일 */
 .destination-modal,
+.admin-login-modal,
 .image-modal {
     position: fixed;
     top: 0;
@@ -2820,6 +2821,7 @@ ul.breadcrumb li a:hover {
 }
 
 .destination-modal-content,
+.admin-login-content,
 .image-modal-content {
     position: relative;
     background: white;
@@ -2836,6 +2838,7 @@ ul.breadcrumb li a:hover {
 }
 
 .close-destination,
+.close-admin,
 .close-image {
     position: absolute;
     top: 15px;
@@ -2847,6 +2850,7 @@ ul.breadcrumb li a:hover {
 }
 
 .close-destination:hover,
+.close-admin:hover,
 .close-image:hover {
     color: #f25601;
 }
@@ -4015,4 +4019,3 @@ body.skeleton-lock { overflow: hidden; }
     25% { transform: translateX(-5px); }
     75% { transform: translateX(5px); }
 }
-
