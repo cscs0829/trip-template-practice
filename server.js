@@ -815,7 +815,74 @@ pool.query('SELECT NOW()', async (err, res) => {
           updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
       `);
-      console.log('필수 테이블(users, board_posts) 확인/생성 완료');
+      
+      // destinations 테이블 생성
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS destinations (
+          id SERIAL PRIMARY KEY,
+          name VARCHAR(255) NOT NULL,
+          title VARCHAR(255) NOT NULL,
+          description TEXT,
+          highlights TEXT[],
+          price_min INTEGER NOT NULL,
+          price_max INTEGER,
+          rating DECIMAL(2,1) DEFAULT 4.0,
+          image_url VARCHAR(500),
+          location_info TEXT,
+          map_embed_url TEXT,
+          duration VARCHAR(100),
+          min_participants INTEGER DEFAULT 1,
+          max_participants INTEGER DEFAULT 15,
+          includes TEXT[],
+          schedule VARCHAR(100),
+          slug VARCHAR(255) UNIQUE NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `);
+      
+      // gallery_images 테이블 생성
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS gallery_images (
+          id SERIAL PRIMARY KEY,
+          image_url VARCHAR(500) NOT NULL,
+          alt_text VARCHAR(255),
+          destination_id INTEGER REFERENCES destinations(id),
+          is_featured BOOLEAN DEFAULT false,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `);
+      
+      // popular_tours 테이블 생성
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS popular_tours (
+          id SERIAL PRIMARY KEY,
+          name VARCHAR(255) NOT NULL,
+          description TEXT,
+          price_min INTEGER NOT NULL,
+          price_max INTEGER,
+          rating DECIMAL(2,1) DEFAULT 4.0,
+          image_url VARCHAR(500),
+          destination_id INTEGER REFERENCES destinations(id),
+          is_featured BOOLEAN DEFAULT false,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `);
+      
+      // news 테이블 생성
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS news (
+          id SERIAL PRIMARY KEY,
+          title VARCHAR(500) NOT NULL,
+          content TEXT,
+          image_url VARCHAR(500),
+          published_date DATE,
+          slug VARCHAR(255) UNIQUE NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `);
+      
+      console.log('필수 테이블(users, board_posts, destinations, gallery_images, popular_tours, news) 확인/생성 완료');
     } catch (e) {
       console.error('필수 테이블 생성 중 오류:', e);
     }
@@ -868,8 +935,70 @@ pool.query('SELECT NOW()', async (err, res) => {
         );
         console.log('board_posts 초기 데이터가 삽입되었습니다.');
       }
-    } catch (error) {
-      console.error('게시판 초기 데이터 시드 실패:', error);
-    }
+          } catch (error) {
+        console.error('게시판 초기 데이터 시드 실패:', error);
+      }
+      
+      // destinations 초기 데이터 시드 (없을 때만)
+      try {
+        const destCountRes = await pool.query('SELECT COUNT(*)::int AS count FROM destinations');
+        const destCount = destCountRes.rows[0].count;
+        if (destCount === 0) {
+          await pool.query(`
+            INSERT INTO destinations (name, title, description, highlights, price_min, price_max, rating, image_url, location_info, schedule, min_participants, max_participants, includes, slug) VALUES
+            ('발리 울룬다누 사원', '발리 울룬다누 사원', '발리의 아름다운 호수 위에 자리잡은 신성한 사원을 방문하여 평온함과 영적인 경험을 느껴보세요.', 
+            ARRAY['호수 위의 아름다운 사원 경관', '발리 전통 건축 양식 감상', '평화로운 호수 산책', '현지 가이드 동행'], 
+            15000, NULL, 4.0, 'img/temple.jpg', '발리 중부 베두굴 지역', '08:00 - 16:00', 1, 15, 
+            ARRAY['입장료', '가이드 서비스', '교통편'], 'bali-ulun-danu-temple'),
+            ('쿠타 비치', '쿠타 비치', '발리에서 가장 유명한 해변 중 하나로, 서핑과 석양으로 유명한 아름다운 해변입니다.', 
+            ARRAY['세계적으로 유명한 서핑 스팟', '아름다운 석양 감상', '해변 레스토랑과 바', '쇼핑 및 나이트라이프'], 
+            30000, NULL, 4.0, 'img/pantai-kuta.jpg', '발리 남부 쿠타 지역', '전일', 1, 15, 
+            ARRAY['해변 이용료', '서핑보드 대여(선택)', '가이드 서비스'], 'kuta-beach'),
+            ('울루와투 비치', '울루와투 비치', '절벽 위에서 바라보는 환상적인 바다 전망과 전통 케착 댄스를 감상할 수 있는 곳입니다.', 
+            ARRAY['절벽 위의 장관', '케착 댄스 공연 관람', '울루와투 사원 방문', '석양 감상 포인트'], 
+            75000, NULL, 4.0, 'img/uluwatu.jpg', '발리 남부 울루와투', '14:00 - 20:00', 1, 15, 
+            ARRAY['입장료', '케착 댄스 관람료', '교통편', '가이드 서비스'], 'uluwatu-beach')
+          `);
+          console.log('destinations 초기 데이터가 삽입되었습니다.');
+        }
+      } catch (error) {
+        console.error('destinations 초기 데이터 시드 실패:', error);
+      }
+      
+      // popular_tours 초기 데이터 시드 (없을 때만)
+      try {
+        const tourCountRes = await pool.query('SELECT COUNT(*)::int AS count FROM popular_tours');
+        const tourCount = tourCountRes.rows[0].count;
+        if (tourCount === 0) {
+          await pool.query(`
+            INSERT INTO popular_tours (name, description, price_min, price_max, rating, image_url, is_featured) VALUES
+            ('제주도 3박4일 패키지', '제주도의 아름다운 자연과 맛있는 음식을 즐기는 완벽한 패키지', 299000, NULL, 4.0, 'img/pantai-kuta.jpg', true),
+            ('부산 2박3일 패키지', '부산의 바다와 도시를 함께 즐기는 여행', 199000, NULL, 4.0, 'img/temple.jpg', true),
+            ('강릉 1박2일 패키지', '강릉의 커피와 바다를 만끽하는 짧은 여행', 99000, 149000, 4.0, 'img/tanah-lot.jpeg', true),
+            ('여수 2박3일 패키지', '여수 밤바다의 아름다움을 느끼는 여행', 179000, 249000, 4.0, 'img/bali-bird-park.jpg', true),
+            ('속초 1박2일 패키지', '속초의 자연과 맛집을 즐기는 여행', 89000, NULL, 4.0, 'img/gunung.jpg', true)
+          `);
+          console.log('popular_tours 초기 데이터가 삽입되었습니다.');
+        }
+      } catch (error) {
+        console.error('popular_tours 초기 데이터 시드 실패:', error);
+      }
+      
+      // news 초기 데이터 시드 (없을 때만)
+      try {
+        const newsCountRes = await pool.query('SELECT COUNT(*)::int AS count FROM news');
+        const newsCount = newsCountRes.rows[0].count;
+        if (newsCount === 0) {
+          await pool.query(`
+            INSERT INTO news (title, content, image_url, published_date, slug) VALUES
+            ('2024년 가장 인기 있는 국내 여행지 TOP 10', '2024년 한 해 동안 가장 많은 관심을 받은 국내 여행지들을 소개합니다.', 'img/news/039443100_1523457714-IMG-20180411-WA0038.jpg', '2024-01-15', '2024-top-destinations'),
+            ('봄맞이 꽃 축제 일정 및 추천 여행지', '봄철 전국 각지에서 열리는 꽃 축제 정보와 추천 여행 코스를 안내드립니다.', 'img/news/038321800_1523380452-IMG-20180410-WA0031.jpg', '2024-01-10', 'spring-flower-festivals'),
+            ('여행 가이드북 출간 및 특별 할인 이벤트', '트립페이지에서 새롭게 출간한 여행 가이드북과 특별 할인 이벤트를 소개합니다.', 'img/news/023053600_1523534851-IMG-20180412-WA0034.jpg', '2024-01-05', 'guidebook-launch-event')
+          `);
+          console.log('news 초기 데이터가 삽입되었습니다.');
+        }
+      } catch (error) {
+        console.error('news 초기 데이터 시드 실패:', error);
+      }
   }
 });

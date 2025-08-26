@@ -10,9 +10,7 @@
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
-    "metadata": {
-      "actualWorkers": 1
-    },
+    "metadata": {},
     "preserveOutput": "always",
     "reporter": [
       [
@@ -42,9 +40,7 @@
         "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {
-          "actualWorkers": 1
-        },
+        "metadata": {},
         "id": "chromium",
         "name": "chromium",
         "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
@@ -58,9 +54,7 @@
         "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {
-          "actualWorkers": 1
-        },
+        "metadata": {},
         "id": "firefox",
         "name": "firefox",
         "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
@@ -74,9 +68,7 @@
         "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {
-          "actualWorkers": 1
-        },
+        "metadata": {},
         "id": "webkit",
         "name": "webkit",
         "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
@@ -90,9 +82,7 @@
         "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {
-          "actualWorkers": 1
-        },
+        "metadata": {},
         "id": "mobile-chrome",
         "name": "mobile-chrome",
         "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
@@ -106,9 +96,7 @@
         "outputDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {
-          "actualWorkers": 1
-        },
+        "metadata": {},
         "id": "mobile-safari",
         "name": "mobile-safari",
         "testDir": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests",
@@ -131,106 +119,19 @@
       "timeout": 120000
     }
   },
-  "suites": [
+  "suites": [],
+  "errors": [
     {
-      "title": "news-board-pagination.spec.js",
-      "file": "news-board-pagination.spec.js",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "News Board pagination",
-          "file": "news-board-pagination.spec.js",
-          "line": 22,
-          "column": 6,
-          "specs": [
-            {
-              "title": "renders list and paginates if multiple pages",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "failed",
-                      "duration": 281,
-                      "error": {
-                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
-                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/parkchangseon/Desktop/트립페이지 홈페이지/tests/news-board-pagination.spec.js:34:33",
-                        "location": {
-                          "file": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests/news-board-pagination.spec.js",
-                          "column": 33,
-                          "line": 34
-                        },
-                        "snippet": "  32 | \t\tconst items = await page.locator('#board-list .col').count();\n  33 | \t\tconst hasEmpty = await page.locator('#board-list p').first().isVisible().catch(() => false);\n> 34 | \t\texpect(items > 0 || hasEmpty).toBeTruthy();\n     | \t\t                              ^\n  35 |\n  36 | \t\tawait expect(page.locator('#board-pagination')).toHaveCount(1);\n  37 | \t});"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests/news-board-pagination.spec.js",
-                            "column": 33,
-                            "line": 34
-                          },
-                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  32 | \t\tconst items = await page.locator('#board-list .col').count();\n  33 | \t\tconst hasEmpty = await page.locator('#board-list p').first().isVisible().catch(() => false);\n> 34 | \t\texpect(items > 0 || hasEmpty).toBeTruthy();\n     | \t\t                              ^\n  35 |\n  36 | \t\tawait expect(page.locator('#board-pagination')).toHaveCount(1);\n  37 | \t});\n    at /Users/parkchangseon/Desktop/트립페이지 홈페이지/tests/news-board-pagination.spec.js:34:33"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-25T08:49:12.102Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results/news-board-pagination-News-e7a12-paginates-if-multiple-pages-chromium/test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results/news-board-pagination-News-e7a12-paginates-if-multiple-pages-chromium/video.webm"
-                        },
-                        {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/test-results/news-board-pagination-News-e7a12-paginates-if-multiple-pages-chromium/error-context.md"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "/Users/parkchangseon/Desktop/트립페이지 홈페이지/tests/news-board-pagination.spec.js",
-                        "column": 33,
-                        "line": 34
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "5db73458085887384d3d-c8037079891977c10317",
-              "file": "news-board-pagination.spec.js",
-              "line": 28,
-              "column": 2
-            }
-          ]
-        }
-      ]
+      "message": "Error: No tests found",
+      "stack": "Error: No tests found"
     }
   ],
-  "errors": [],
   "stats": {
-    "startTime": "2025-08-25T08:49:11.615Z",
-    "duration": 1008.4019999999999,
+    "startTime": "2025-08-25T16:22:55.690Z",
+    "duration": 22.437000000000012,
     "expected": 0,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }
