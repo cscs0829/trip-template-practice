@@ -202,18 +202,8 @@
 	</div>
 </section>
 
-<ul class="pagination">
-	<a href="#" class="pagination-arrow arrow-left">
-	   <span class="ion-ios-arrow-back"></span>
-	</a>
-	<a class="pagin-number active">1</a>
-	<a href="#" class="pagin-number">2</a>
-	<a href="#" class="pagin-number">3</li>
-	<a href="#" class="pagin-number">4</a>
-	<a href="#" class="pagin-number">5</a>
-	<a href="#" class="pagin-arrow arrow-right">
-	   <span class="ion-ios-arrow-forward"></span>
-	</a>
+<ul class="pagination" id="destination-pagination">
+	<!-- 페이지네이션이 동적으로 로드됩니다 -->
 </ul>
 
 <!-- Footer (reusable) -->
@@ -231,6 +221,7 @@ if (window.showPageSkeleton) {
 </script>
 <script type="text/javascript" src="js/toss-auth.js"></script>
 <script type="text/javascript" src="js/swipe.js"></script>
+<script type="text/javascript" src="js/pagination.js"></script>
 
 <script>
 function isAdminUser() {
@@ -290,7 +281,7 @@ async function loadDestinations(page = 1, pageSize = 9) {
         });
 
         // 페이지네이션 렌더링
-        renderDestinationsPagination(data.page, data.totalPages);
+        renderPagination('destination-pagination', data.page, data.totalPages, loadDestinations);
     } catch (error) {
         console.error('여행지 목록 로드 실패:', error);
         const container = document.getElementById('destinations-container');
@@ -299,32 +290,6 @@ async function loadDestinations(page = 1, pageSize = 9) {
     finally {
         if (window.hidePageSkeleton) window.hidePageSkeleton();
     }
-}
-
-function renderDestinationsPagination(current, total) {
-    const pag = document.querySelector('ul.pagination');
-    if (!pag) return;
-    pag.innerHTML = '';
-
-    function addPage(label, pageNum, disabled = false, active = false) {
-        const a = document.createElement('a');
-        a.href = '#';
-        a.className = active ? 'pagin-number active' : (label === 'prev' || label === 'next' ? 'pagin-arrow' : 'pagin-number');
-        if (label === 'prev') a.classList.add('arrow-left');
-        if (label === 'next') a.classList.add('arrow-right');
-        a.innerHTML = label === 'prev' ? '<span class="ion-ios-arrow-back"></span>' : (label === 'next' ? '<span class="ion-ios-arrow-forward"></span>' : String(pageNum));
-        if (disabled) a.style.pointerEvents = 'none';
-        a.addEventListener('click', function(e){ e.preventDefault(); if (!disabled) loadDestinations(pageNum); });
-        pag.appendChild(a);
-    }
-
-    addPage('prev', Math.max(1, current - 1), current === 1);
-    const start = Math.max(1, current - 2);
-    const end = Math.min(total, start + 4);
-    for (let p = start; p <= end; p++) {
-        addPage(null, p, false, p === current);
-    }
-    addPage('next', Math.min(total, current + 1), current === total);
 }
 
 // 페이지 로드 시 여행지 목록 로드

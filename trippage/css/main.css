@@ -1,4 +1,4 @@
-﻿﻿/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* CSS Variables for Common Colors */
 :root {
@@ -2806,20 +2806,6 @@ ul.breadcrumb li a:hover {
   margin-top: 15px;
 }
 
-/* 모달 스타일 */
-.destination-modal,
-.admin-login-modal,
-.image-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    display: none;
-}
-
 .destination-modal-content,
 .admin-login-content,
 .image-modal-content {
@@ -2847,12 +2833,6 @@ ul.breadcrumb li a:hover {
     cursor: pointer;
     color: #666;
     transition: color 0.3s ease;
-}
-
-.close-destination:hover,
-.close-admin:hover,
-.close-image:hover {
-    color: #f25601;
 }
 
 .destination-modal-header,
